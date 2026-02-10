@@ -3,13 +3,13 @@ import React from 'react';
 
 interface Partner {
     name: string;
-    type: string;
+    type: 'image' | 'text';
     url?: string;
     style?: string;
 }
 
 const PartnerLogo: React.FC<{ partner: Partner }> = ({ partner }) => {
-    if (partner.type === 'image' && partner.url) {
+    if (partner.url) {
         return (
             <img
                 src={partner.url}
@@ -21,7 +21,7 @@ const PartnerLogo: React.FC<{ partner: Partner }> = ({ partner }) => {
     }
 
     return (
-        <div className={`text-slate-900 text-xl hover:scale-110 transition-transform whitespace-nowrap ${partner.style || ''}`}>
+        <div className={`text-slate-900 text-xl hover:scale-110 transition-transform whitespace-nowrap ${partner.style || ''}`} aria-label={`Fallback logo ${partner.name}`}>
             {partner.name}
         </div>
     );
