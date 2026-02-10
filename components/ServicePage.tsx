@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import { ArrowLeft, Check, Phone, MessageCircle, Star, ChevronDown, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ServiceDetailContent } from '../data/serviceDetails';
+import SafeImage from './ui/SafeImage';
 
 interface Testimonial {
   name: string;
@@ -86,10 +87,13 @@ const ServicePage: React.FC<ServicePageProps> = ({ content, onBack, onOpenChat, 
       {/* SERVICE HERO */}
       <div className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-slate-900">
         <div className="absolute inset-0 z-0">
-          <img 
+          <SafeImage 
             src={content.heroImage} 
             alt={content.title} 
-            className="w-full h-full object-cover opacity-50"
+            className="w-full h-full opacity-50"
+            containerClassName="w-full h-full"
+            critical
+            fallbackText="Image de couverture indisponible"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
         </div>
@@ -202,10 +206,12 @@ const ServicePage: React.FC<ServicePageProps> = ({ content, onBack, onOpenChat, 
               <div key={idx} className="group cursor-default">
                 <div className="overflow-hidden rounded-xl bg-slate-200 aspect-video mb-4 relative">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
-                  <img 
+                  <SafeImage 
                     src={proj.image} 
                     alt={proj.title} 
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full transform group-hover:scale-105 transition-transform duration-700"
+                    containerClassName="w-full h-full"
+                    fallbackText="Image de projet indisponible"
                   />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-cyan-700 transition-colors">

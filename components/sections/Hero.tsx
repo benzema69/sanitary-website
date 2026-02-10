@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, ArrowRight, ShieldCheck, Clock } from 'lucide-react';
 import Section from '../Section';
+import SafeImage from '../ui/SafeImage';
 import { PHONE_DISPLAY, PHONE_HREF } from '../../data';
 
 interface HeroProps {
@@ -14,10 +15,12 @@ const Hero: React.FC<HeroProps> = ({ scrollTo }) => {
         <Section id="hero" className="min-h-[85vh] flex flex-col justify-center border-b border-slate-100 bg-slate-50 relative overflow-hidden">
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
-                <img
+                <SafeImage
                     src="https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=2000&auto=format&fit=crop"
                     alt="Background"
-                    className="w-full h-full object-cover opacity-10 grayscale-[30%] blur-[2px]"
+                    className="w-full h-full opacity-10 grayscale-[30%] blur-[2px]"
+                    containerClassName="w-full h-full"
+                    critical
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white/95" />
             </div>

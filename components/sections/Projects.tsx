@@ -3,6 +3,7 @@ import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Sparkles, MessageCircle, Check, Star, Loader2 } from 'lucide-react';
 import Section from '../Section';
+import SafeImage from '../ui/SafeImage';
 import { PROJECTS } from '../../data';
 
 interface ProjectsProps {
@@ -202,7 +203,7 @@ const Projects: React.FC<ProjectsProps> = ({
                                 >
                                     <div className="w-24 h-24 bg-slate-200 rounded overflow-hidden shrink-0 relative">
                                         <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
-                                        <img src={project.img} alt={project.title} className="w-full h-full object-cover" />
+                                        <SafeImage src={project.img} alt={project.title} className="w-full h-full" containerClassName="w-full h-full" fallbackText="Illustration du projet indisponible" />
                                     </div>
                                     <div>
                                         <span className="text-xs font-bold uppercase text-cyan-600">{project.tag}</span>
