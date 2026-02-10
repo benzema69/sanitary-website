@@ -53,8 +53,8 @@ const Locations: React.FC = () => {
                 >
                     {[
                         { title: "Cœur de La Côte", list: LOCATIONS.center, color: "border-cyan-500" },
-                        { title: "Ouest (Vers Nyon)", list: LOCATIONS.east, color: "border-slate-300" },
-                        { title: "Est (Vers Morges)", list: LOCATIONS.west, color: "border-slate-300" },
+                        { title: "Est (Vers Nyon)", list: LOCATIONS.east, color: "border-slate-300" },
+                        { title: "Ouest (Vers Morges)", list: LOCATIONS.west, color: "border-slate-300" },
                         { title: "Nord (Pied du Jura)", list: LOCATIONS.north, color: "border-slate-300" },
                     ].map((zone, i) => (
                         <motion.div

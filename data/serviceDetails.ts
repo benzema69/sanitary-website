@@ -137,7 +137,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
       },
       {
         title: "Eau de Boisson",
-        description: "Pose d'un système de filtration sous évier. Mes clients ne comprent plus de bouteilles en plastique.",
+        description: "Pose d'un système de filtration sous évier. Mes clients n'achètent plus de bouteilles en plastique.",
         image: "https://images.unsplash.com/photo-1617103996702-96ff29b1c467?q=80&w=600&auto=format&fit=crop"
       }
     ]

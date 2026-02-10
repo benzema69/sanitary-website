@@ -33,7 +33,7 @@ const Partners: React.FC = () => {
                     }}
                 >
                     {[...PARTNERS, ...PARTNERS, ...PARTNERS, ...PARTNERS].map((partner, i) => (
-                        <div key={i} className="shrink-0 flex items-center justify-center">
+                        <div key={i} className="shrink-0 flex items-center justify-center bg-white rounded-xl px-6 py-3 min-w-[140px]">
                             <PartnerLogo partner={partner} />
                         </div>
                     ))}

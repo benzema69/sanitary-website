@@ -21,7 +21,7 @@ const PartnerLogo: React.FC<{ partner: Partner }> = ({ partner }) => {
     }
 
     return (
-        <div className={`text-white text-xl opacity-70 hover:opacity-100 transition-opacity whitespace-nowrap ${partner.style || ''}`}>
+        <div className={`text-slate-900 text-xl hover:scale-110 transition-transform whitespace-nowrap ${partner.style || ''}`}>
             {partner.name}
         </div>
     );
