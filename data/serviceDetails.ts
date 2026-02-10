@@ -3,6 +3,25 @@
  * SPDX-License-Identifier: Apache-2.0
 */
 
+import urgencesHeroImage from '../assets/services/urgences/hero.svg';
+import urgencesReparationFuiteImage from '../assets/services/urgences/projects/reparation-fuite-encastree.svg';
+import urgencesSauvetageBoilerImage from '../assets/services/urgences/projects/sauvetage-boiler.svg';
+import sdbHeroImage from '../assets/services/sdb/hero.svg';
+import sdbTransformationDoucheImage from '../assets/services/sdb/projects/transformation-douche.svg';
+import sdbRenovationCompleteVillaImage from '../assets/services/sdb/projects/renovation-complete-villa.svg';
+import traitementHeroImage from '../assets/services/traitement/hero.svg';
+import traitementAdoucisseurBwtVillaImage from '../assets/services/traitement/projects/adoucisseur-bwt-villa.svg';
+import traitementEauDeBoissonImage from '../assets/services/traitement/projects/eau-de-boisson.svg';
+import techniqueHeroImage from '../assets/services/technique/hero.svg';
+import techniqueRemplacementBoilerPacImage from '../assets/services/technique/projects/remplacement-boiler-pac.svg';
+import techniqueDetartrageManuelImage from '../assets/services/technique/projects/detartrage-manuel.svg';
+import cuisineHeroImage from '../assets/services/cuisine/hero.svg';
+import cuisineIlotImage from '../assets/services/cuisine/projects/cuisine-ilot.svg';
+import cuisineRobinetterieIndustrielleImage from '../assets/services/cuisine/projects/robinetterie-industrielle.svg';
+import canalisationsHeroImage from '../assets/services/canalisations/hero.svg';
+import canalisationsRemplacementColonneImage from '../assets/services/canalisations/projects/remplacement-colonne.svg';
+import canalisationsDiagnosticCameraImage from '../assets/services/canalisations/projects/diagnostic-camera.svg';
+
 export interface ServiceProject {
   title: string;
   description: string;
@@ -26,7 +45,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
     id: 'urgences',
     title: 'Dépannage Sanitaire d\'Urgence',
     subtitle: 'J\'interviens personnellement et rapidement sur La Côte',
-    heroImage: 'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?q=80&w=1200&auto=format&fit=crop',
+    heroImage: urgencesHeroImage,
     fullDescription: `
       Face à une urgence sanitaire, vous n'avez pas envie de tomber sur un standard téléphonique. En m'appelant, vous tombez directement sur moi.
       La réactivité et la compétence sont mes priorités pour limiter vos dégâts. 
@@ -54,12 +73,12 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
       {
         title: "Réparation Fuite Encastrée",
         description: "J'ai localisé et réparé cette fuite sous carrelage en minimisant la casse.",
-        image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=600&auto=format&fit=crop"
+        image: urgencesReparationFuiteImage
       },
       {
         title: "Sauvetage Boiler",
         description: "Intervention un dimanche pour un groupe de sécurité qui inondait la cave.",
-        image: "https://images.unsplash.com/photo-1542013936693-884638332954?q=80&w=600&auto=format&fit=crop"
+        image: urgencesSauvetageBoilerImage
       }
     ]
   },
@@ -67,7 +86,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
     id: 'sdb',
     title: 'Création & Rénovation de Salle de Bains',
     subtitle: 'Je réalise votre projet de A à Z : un seul interlocuteur, une finition parfaite',
-    heroImage: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=1200&auto=format&fit=crop',
+    heroImage: sdbHeroImage,
     fullDescription: `
       La salle de bains est une pièce intime qui demande une confiance totale en l'artisan.
       Je vous accompagne personnellement dans votre projet, de la première visite technique à la pose du dernier joint de silicone.
@@ -94,12 +113,12 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
       {
         title: "Transformation Douche",
         description: "J'ai remplacé cette baignoire par une douche spacieuse pour un couple de retraités.",
-        image: "https://images.unsplash.com/photo-1604709177225-055f99402ea3?q=80&w=600&auto=format&fit=crop"
+        image: sdbTransformationDoucheImage
       },
       {
         title: "Rénovation Complète Villa",
         description: "Refonte totale de la salle de bain principale : carrelage, sanitaire et meubles posés par mes soins.",
-        image: "https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=600&auto=format&fit=crop"
+        image: sdbRenovationCompleteVillaImage
       }
     ]
   },
@@ -107,7 +126,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
     id: 'traitement',
     title: 'Traitement de l\'Eau & Adoucisseurs',
     subtitle: 'Je protège votre maison contre le calcaire de La Côte',
-    heroImage: 'https://images.unsplash.com/photo-1546552356-3fae876a61ca?q=80&w=1200&auto=format&fit=crop',
+    heroImage: traitementHeroImage,
     fullDescription: `
       Habitant la région, je connais parfaitement la dureté de notre eau. Le calcaire est l'ennemi n°1 de vos installations.
       Je ne me contente pas de vendre une boîte : je dimensionne et installe moi-même l'adoucisseur adapté à votre consommation réelle.
@@ -133,12 +152,12 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
       {
         title: "Adoucisseur BWT Villa",
         description: "Installation complète dans un local technique exigu. L'eau est désormais douce dans toute la maison.",
-        image: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=600&auto=format&fit=crop"
+        image: traitementAdoucisseurBwtVillaImage
       },
       {
         title: "Eau de Boisson",
         description: "Pose d'un système de filtration sous évier. Mes clients ne comprent plus de bouteilles en plastique.",
-        image: "https://images.unsplash.com/photo-1617103996702-96ff29b1c467?q=80&w=600&auto=format&fit=crop"
+        image: traitementEauDeBoissonImage
       }
     ]
   },
@@ -146,7 +165,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
     id: 'technique',
     title: 'Installations Techniques & Chauffe-eau',
     subtitle: 'Mon expertise thermique pour votre eau chaude',
-    heroImage: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?q=80&w=1200&auto=format&fit=crop',
+    heroImage: techniqueHeroImage,
     fullDescription: `
       La production d'eau chaude, c'est le cœur technique de votre maison.
       Je m'occupe personnellement du remplacement, de l'entretien et du détartrage de vos boilers. Je ne délègue pas cette tâche technique.
@@ -172,12 +191,12 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
       {
         title: "Remplacement Boiler PAC",
         description: "J'ai remplacé ce vieux modèle électrique énergivore par une PAC moderne.",
-        image: "https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?q=80&w=600&auto=format&fit=crop"
+        image: techniqueRemplacementBoilerPacImage
       },
       {
         title: "Détartrage Manuel",
         description: "Voici les 15kg de calcaire que j'ai retiré manuellement de ce chauffe-eau.",
-        image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=600&auto=format&fit=crop"
+        image: techniqueDetartrageManuelImage
       }
     ]
   },
@@ -185,7 +204,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
     id: 'cuisine',
     title: 'Cuisine & Électroménager',
     subtitle: 'La précision suisse pour vos raccordements',
-    heroImage: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=1200&auto=format&fit=crop',
+    heroImage: cuisineHeroImage,
     fullDescription: `
       Dans une cuisine, la plomberie doit être invisible mais infaillible. Une fuite sous un meuble encastré peut faire des ravages.
       C'est pourquoi je réalise moi-même tous les raccordements de vos appareils : lave-vaisselle, lave-linge, frigos américains.
@@ -211,12 +230,12 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
       {
         title: "Cuisine Îlot",
         description: "J'ai dû créer des arrivées d'eau au sol précises pour cet îlot central.",
-        image: "https://images.unsplash.com/photo-1556909212-d5b604d0c90d?q=80&w=600&auto=format&fit=crop"
+        image: cuisineIlotImage
       },
       {
         title: "Robinetterie Industrielle",
         description: "Pose d'un mitigeur complexe avec douchette. Ajustement parfait.",
-        image: "https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=600&auto=format&fit=crop"
+        image: cuisineRobinetterieIndustrielleImage
       }
     ]
   },
@@ -224,7 +243,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
     id: 'canalisations',
     title: 'Réseaux & Canalisations',
     subtitle: 'J\'inspecte et rénove vos réseaux invisibles',
-    heroImage: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=1200&auto=format&fit=crop',
+    heroImage: canalisationsHeroImage,
     fullDescription: `
       Quand un problème survient sous terre ou dans un mur, il faut un expert équipé.
       Je dispose de ma propre caméra endoscopique pour inspecter vos canalisations. C'est moi qui tiens la caméra et qui interprète ce que je vois : racine, cassure, bouchon.
@@ -250,12 +269,12 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
       {
         title: "Remplacement Colonne",
         description: "J'ai changé cette vieille colonne en fonte fissurée dans un immeuble habité.",
-        image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=600&auto=format&fit=crop"
+        image: canalisationsRemplacementColonneImage
       },
       {
         title: "Diagnostic Caméra",
         description: "C'est moi qui ai repéré cette racine qui bloquait tout l'écoulement de la villa.",
-        image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=600&auto=format&fit=crop"
+        image: canalisationsDiagnosticCameraImage
       }
     ]
   }
