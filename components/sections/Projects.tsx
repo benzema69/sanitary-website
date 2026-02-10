@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Sparkles, MessageCircle, Check, Star } from 'lucide-react';
+import { Sparkles, MessageCircle, Check, Star, Loader2 } from 'lucide-react';
 import Section from '../Section';
 import { PROJECTS } from '../../data';
 
@@ -175,9 +175,16 @@ const Projects: React.FC<ProjectsProps> = ({
                                 <button
                                     type="submit"
                                     disabled={isFormSubmitting}
-                                    className="bg-slate-900 text-white px-8 py-4 rounded-lg font-bold w-full hover:bg-cyan-700 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all disabled:opacity-50 disabled:transform-none disabled:shadow-none shadow-lg"
+                                    className="bg-slate-900 text-white px-8 py-4 rounded-lg font-bold w-full hover:bg-cyan-700 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all disabled:opacity-70 disabled:transform-none disabled:shadow-none shadow-lg flex items-center justify-center gap-2"
                                 >
-                                    {isFormSubmitting ? 'Envoi en cours...' : 'Envoyer ma demande'}
+                                    {isFormSubmitting ? (
+                                        <>
+                                            <Loader2 className="w-5 h-5 animate-spin" />
+                                            <span>Envoi en cours...</span>
+                                        </>
+                                    ) : (
+                                        'Envoyer ma demande'
+                                    )}
                                 </button>
                             </motion.form>
                         )}

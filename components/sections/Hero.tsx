@@ -12,8 +12,10 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ scrollTo }) => {
     return (
         <Section id="hero" className="min-h-[85vh] flex flex-col justify-center border-b border-slate-100 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
-            {/* Subtle background element */}
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-cyan-50/50 skew-x-12 translate-x-1/2 pointer-events-none" />
+            {/* Animated Background Elements */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob" />
+            <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-sky-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000" />
+            <div className="absolute -bottom-32 left-0 w-[600px] h-[600px] bg-slate-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000" />
 
             <div className="container mx-auto max-w-5xl relative z-10">
                 <motion.div

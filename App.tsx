@@ -10,6 +10,7 @@ import AIChat, { AIChatHandle } from './components/AIChat';
 import ServicePage from './components/ServicePage';
 import { SERVICE_DETAILS } from './data/serviceDetails';
 import { PHONE_DISPLAY, PHONE_HREF, EMAIL, NAV_LINKS, FAQ_ITEMS, TESTIMONIALS } from './data';
+import { sendProjectEmail } from './services/emailService';
 
 // Component Imports
 import LegalModal from './components/LegalModal';
@@ -135,13 +136,19 @@ const App: React.FC = () => {
     setMobileMenuOpen(false);
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsFormSubmitting(true);
-    setTimeout(() => {
-      setIsFormSubmitting(false);
+
+    const success = await sendProjectEmail(formData);
+
+    setIsFormSubmitting(false);
+    if (success) {
       setFormSuccess(true);
-    }, 1500);
+      // Optional: Clear form here or keep it
+    } else {
+      alert("Une erreur est survenue lors de l'envoi du message. Veuillez réessayer ou nous contacter par téléphone.");
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -247,7 +254,7 @@ const App: React.FC = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-30 bg-white pt-24 px-6 md:hidden flex flex-col gap-6 overflow-y-auto pb-32"
+            className="fixed inset-0 z-30 bg-white/90 backdrop-blur-md pt-24 px-6 md:hidden flex flex-col gap-6 overflow-y-auto pb-32"
           >
             {NAV_LINKS.concat({ label: 'Contact', id: 'contact' }).map((item) => (
               <button
