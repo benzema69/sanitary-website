@@ -54,7 +54,7 @@ Accédez à `http://localhost:5173`.
 ## 🏗️ Structure du Projet
 
 ```
-src/
+./
 ├── assets/          # Images (Logos, Photos Unsplash)
 ├── components/      # Composants React
 │   ├── sections/    # Hero, Services, Projets, Contact...

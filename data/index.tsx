@@ -158,11 +158,6 @@ export const PARTNERS = [
     name: "Getaz-Miauton",
     type: "image",
     url: getazLogo
-  },
-  {
-    name: "Villeroy & Boch",
-    type: "image",
-    url: "https://upload.wikimedia.org/wikipedia/commons/0/06/Villeroy_%26_Boch_Logo.svg"
   }
 ];
 
@@ -211,7 +206,7 @@ export const PROJECTS = [
   },
   {
     title: 'Robinetterie KWC',
-    img: 'https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=600&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=600&auto=format&fit=crop',
     tag: 'Sanitaire'
   }
 ];

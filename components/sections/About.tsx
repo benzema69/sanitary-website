@@ -36,7 +36,7 @@ const About: React.FC = () => {
                     >
                         <div className="absolute inset-0 bg-cyan-600 rounded-lg transform translate-x-3 translate-y-3"></div>
                         <img
-                            src="https://images.unsplash.com/photo-1605218427306-6354db696faa?q=80&w=1000&auto=format&fit=crop"
+                            src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1000&auto=format&fit=crop"
                             alt="Travail de plomberie de précision"
                             className="rounded-lg shadow-xl relative z-10 grayscale hover:grayscale-0 transition-all duration-700 object-cover h-[500px] w-full bg-slate-200"
                         />

@@ -107,7 +107,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
     id: 'traitement',
     title: 'Traitement de l\'Eau & Adoucisseurs',
     subtitle: 'Je protège votre maison contre le calcaire de La Côte',
-    heroImage: 'https://images.unsplash.com/photo-1521510064669-e6530a210344?q=80&w=1200&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1546552356-3fae876a61ca?q=80&w=1200&auto=format&fit=crop',
     fullDescription: `
       Habitant la région, je connais parfaitement la dureté de notre eau. Le calcaire est l'ennemi n°1 de vos installations.
       Je ne me contente pas de vendre une boîte : je dimensionne et installe moi-même l'adoucisseur adapté à votre consommation réelle.
@@ -133,7 +133,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
       {
         title: "Adoucisseur BWT Villa",
         description: "Installation complète dans un local technique exigu. L'eau est désormais douce dans toute la maison.",
-        image: "https://images.unsplash.com/photo-1563456002130-9759e6d45e03?q=80&w=600&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=600&auto=format&fit=crop"
       },
       {
         title: "Eau de Boisson",
@@ -177,7 +177,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
       {
         title: "Détartrage Manuel",
         description: "Voici les 15kg de calcaire que j'ai retiré manuellement de ce chauffe-eau.",
-        image: "https://images.unsplash.com/photo-1581092921461-eab62e47a33b?q=80&w=600&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=600&auto=format&fit=crop"
       }
     ]
   },
@@ -216,7 +216,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
       {
         title: "Robinetterie Industrielle",
         description: "Pose d'un mitigeur complexe avec douchette. Ajustement parfait.",
-        image: "https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=600&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=600&auto=format&fit=crop"
       }
     ]
   },
@@ -224,7 +224,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
     id: 'canalisations',
     title: 'Réseaux & Canalisations',
     subtitle: 'J\'inspecte et rénove vos réseaux invisibles',
-    heroImage: 'https://images.unsplash.com/photo-1615816914589-702330a62308?q=80&w=1200&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=1200&auto=format&fit=crop',
     fullDescription: `
       Quand un problème survient sous terre ou dans un mur, il faut un expert équipé.
       Je dispose de ma propre caméra endoscopique pour inspecter vos canalisations. C'est moi qui tiens la caméra et qui interprète ce que je vois : racine, cassure, bouchon.
@@ -255,7 +255,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetailContent> = {
       {
         title: "Diagnostic Caméra",
         description: "C'est moi qui ai repéré cette racine qui bloquait tout l'écoulement de la villa.",
-        image: "https://images.unsplash.com/photo-1590136952862-e62a04944449?q=80&w=600&auto=format&fit=crop"
+        image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=600&auto=format&fit=crop"
       }
     ]
   }
