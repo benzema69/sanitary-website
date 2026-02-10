@@ -1,0 +1,10 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="720" fill="#E2E8F0"/>
+  <rect x="160" y="120" width="960" height="480" rx="24" fill="#CBD5E1"/>
+  <path d="M420 455C420 400.772 463.772 357 518 357H762C816.228 357 860 400.772 860 455V470H420V455Z" fill="#0E7490"/>
+  <rect x="500" y="248" width="280" height="132" rx="18" fill="#155E75"/>
+  <circle cx="640" cy="314" r="40" fill="#A5F3FC"/>
+  <path d="M640 275V353" stroke="#155E75" stroke-width="10" stroke-linecap="round"/>
+  <path d="M601 314H679" stroke="#155E75" stroke-width="10" stroke-linecap="round"/>
+  <text x="640" y="540" text-anchor="middle" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Visuel chantier indisponible</text>
+</svg>

@@ -1,5 +1,6 @@
 
 import React from 'react';
+import SafeImage from './ui/SafeImage';
 
 interface Partner {
     name: string;
@@ -11,11 +12,12 @@ interface Partner {
 const PartnerLogo: React.FC<{ partner: Partner }> = ({ partner }) => {
     if (partner.type === 'image' && partner.url) {
         return (
-            <img
+            <SafeImage
                 src={partner.url}
                 alt={`Logo ${partner.name}`}
                 className="h-16 md:h-20 w-auto object-contain hover:scale-110 transition-transform duration-300"
-                loading="lazy"
+                containerClassName="h-16 md:h-20 w-auto bg-transparent overflow-visible"
+                fallbackText={`Logo ${partner.name} indisponible`}
             />
         );
     }

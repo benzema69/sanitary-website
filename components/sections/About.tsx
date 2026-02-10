@@ -3,6 +3,7 @@ import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { ShieldCheck } from 'lucide-react';
 import Section from '../Section';
+import SafeImage from '../ui/SafeImage';
 
 const slideInLeft: Variants = {
     hidden: { opacity: 0, x: -60 },
@@ -35,10 +36,11 @@ const About: React.FC = () => {
                         variants={slideInLeft}
                     >
                         <div className="absolute inset-0 bg-cyan-600 rounded-lg transform translate-x-3 translate-y-3"></div>
-                        <img
+                        <SafeImage
                             src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1000&auto=format&fit=crop"
                             alt="Travail de plomberie de précision"
-                            className="rounded-lg shadow-xl relative z-10 grayscale hover:grayscale-0 transition-all duration-700 object-cover h-[500px] w-full bg-slate-200"
+                            className="rounded-lg shadow-xl relative z-10 grayscale hover:grayscale-0 transition-all duration-700 bg-slate-200"
+                            containerClassName="h-[500px] w-full rounded-lg"
                         />
                     </motion.div>
                     <motion.div
