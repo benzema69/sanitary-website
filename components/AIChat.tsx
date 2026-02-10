@@ -4,10 +4,39 @@
 */
 
 import React, { useState, useRef, useEffect, useImperativeHandle, forwardRef } from 'react';
-import { MessageSquare, X, Send, Bot, Sparkles } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, Sparkles, Trash2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { sendMessageToGemini } from '../services/geminiService';
 import { ChatMessage } from '../types';
+
+/** Lightweight inline-markdown → React nodes */
+const renderMarkdown = (text: string): React.ReactNode[] => {
+  // Split by lines first
+  return text.split('\n').flatMap((line, li, arr) => {
+    const nodes: React.ReactNode[] = [];
+    // Regex: **bold**, *italic*, `code`
+    const re = /(\*\*(.+?)\*\*|\*(.+?)\*|`(.+?)`)|([^*`]+)/g;
+    let m: RegExpExecArray | null;
+    let ki = 0;
+    while ((m = re.exec(line)) !== null) {
+      if (m[2]) {
+        // **bold**
+        nodes.push(<strong key={`${li}-${ki++}`} className="font-semibold">{m[2]}</strong>);
+      } else if (m[3]) {
+        // *italic*
+        nodes.push(<em key={`${li}-${ki++}`}>{m[3]}</em>);
+      } else if (m[4]) {
+        // `code`
+        nodes.push(<code key={`${li}-${ki++}`} className="bg-slate-100 text-cyan-700 px-1 rounded text-xs">{m[4]}</code>);
+      } else if (m[5]) {
+        nodes.push(<span key={`${li}-${ki++}`}>{m[5]}</span>);
+      }
+    }
+    // Add line break between lines (except after last)
+    if (li < arr.length - 1) nodes.push(<br key={`br-${li}`} />);
+    return nodes;
+  });
+};
 
 interface AIChatProps {
   onProjectData?: (data: { name: string; phone: string; email: string; description: string }) => void;
@@ -17,14 +46,38 @@ export interface AIChatHandle {
   openWithContext: (message: string) => void;
 }
 
+const CHAT_STORAGE_KEY = 'chappuis_chat_history';
+const WELCOME_MSG: ChatMessage = { role: 'model', text: 'Bonjour. Je suis l\'assistant virtuel Chappuis. Comment puis-je vous aider pour vos besoins sanitaires ?' };
+
+const loadSavedMessages = (): ChatMessage[] => {
+  try {
+    const saved = localStorage.getItem(CHAT_STORAGE_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+    }
+  } catch { /* ignore */ }
+  return [WELCOME_MSG];
+};
+
 const AIChat = forwardRef<AIChatHandle, AIChatProps>(({ onProjectData }, ref) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: 'Bonjour. Je suis l\'assistant virtuel Chappuis. Comment puis-je vous aider pour vos besoins sanitaires ?' }
-  ]);
+  const [messages, setMessages] = useState<ChatMessage[]>(loadSavedMessages);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+
+  // Persist messages to localStorage
+  useEffect(() => {
+    if (messages.length > 1) {
+      localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
+    }
+  }, [messages]);
+
+  const clearChat = () => {
+    setMessages([WELCOME_MSG]);
+    localStorage.removeItem(CHAT_STORAGE_KEY);
+  };
 
   const scrollToBottom = () => {
     if (chatContainerRef.current) {
@@ -74,6 +127,21 @@ const AIChat = forwardRef<AIChatHandle, AIChatProps>(({ onProjectData }, ref) =>
 
     setMessages(prev => [...prev, { role: 'model', text: displayText }]);
     setIsLoading(false);
+
+    // B4: Play subtle notification sound
+    try {
+      const ctx = new AudioContext();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.frequency.value = 880;
+      osc.type = 'sine';
+      gain.gain.value = 0.08;
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.15);
+    } catch { /* silent fail if AudioContext unavailable */ }
   };
 
   // Expose methods to parent
@@ -101,9 +169,16 @@ const AIChat = forwardRef<AIChatHandle, AIChatProps>(({ onProjectData }, ref) =>
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <h3 className="font-medium text-white text-sm">Assistant Chappuis</h3>
               </div>
-              <button onClick={() => setIsOpen(false)} className="text-white/70 hover:text-white transition-all hover:rotate-90">
-                <X className="w-4 h-4" />
-              </button>
+              <div className="flex items-center gap-2">
+                {messages.length > 1 && (
+                  <button onClick={clearChat} title="Effacer l'historique" className="text-white/40 hover:text-red-400 transition-all">
+                    <Trash2 className="w-3.5 h-3.5" />
+                  </button>
+                )}
+                <button onClick={() => setIsOpen(false)} className="text-white/70 hover:text-white transition-all hover:rotate-90">
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
             </div>
 
             {/* Messages */}
@@ -127,19 +202,48 @@ const AIChat = forwardRef<AIChatHandle, AIChatProps>(({ onProjectData }, ref) =>
                       : 'bg-white text-slate-800 border border-slate-200 rounded-bl-none shadow-sm'
                       }`}
                   >
-                    {msg.text}
+                    {renderMarkdown(msg.text)}
                   </div>
                 </div>
               ))}
+
+              {/* Quick Reply Suggestions — only show after welcome message */}
+              {messages.length === 1 && !isLoading && (
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {[
+                    { label: '🚨 Urgence', msg: "J'ai une urgence sanitaire, pouvez-vous intervenir rapidement ?" },
+                    { label: '📋 Devis gratuit', msg: "J'aimerais obtenir un devis gratuit pour un projet." },
+                    { label: '🕐 Horaires', msg: 'Quels sont vos horaires et jours de disponibilité ?' },
+                    { label: '🔧 Services', msg: 'Quels services proposez-vous exactement ?' },
+                  ].map((qr) => (
+                    <button
+                      key={qr.label}
+                      onClick={() => handleSend(qr.msg, false)}
+                      className="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-700 hover:border-cyan-400 hover:text-cyan-700 transition-all hover:shadow-sm active:scale-95"
+                    >
+                      {qr.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+
               {isLoading && (
                 <div className="flex justify-start gap-2">
                   <div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center shrink-0">
                     <Bot className="w-3 h-3 text-slate-600" />
                   </div>
-                  <div className="bg-white p-3 rounded-lg rounded-bl-none border border-slate-200 shadow-sm flex gap-1 items-center h-10">
-                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  <div className="bg-white p-3 rounded-lg rounded-bl-none border border-slate-200 shadow-sm flex gap-[3px] items-end h-10">
+                    {[0, 1, 2, 3].map(i => (
+                      <span
+                        key={i}
+                        className="w-[3px] bg-cyan-500 rounded-full"
+                        style={{
+                          animation: 'wave 1.2s ease-in-out infinite',
+                          animationDelay: `${i * 0.15}s`,
+                          height: '8px',
+                        }}
+                      />
+                    ))}
                   </div>
                 </div>
               )}

@@ -5,7 +5,7 @@ interface Partner {
     type: string;
     url?: string;
     lightUrl?: string;
-    theme?: 'light' | 'dark' | 'native';
+    theme?: string;
     logoClassName?: string;
     style?: string;
 }
@@ -20,7 +20,7 @@ const PartnerLogo: React.FC<{ partner: Partner }> = ({ partner }) => {
             <img
                 src={logoSource}
                 alt={`Logo ${partner.name}`}
-                className={`h-16 md:h-20 w-auto object-contain hover:scale-110 transition-transform duration-300 ${partner.logoClassName || ''}`.trim()}
+                className={`h-12 md:h-16 w-auto object-contain mix-blend-multiply ${partner.logoClassName || ''}`.trim()}
                 loading="lazy"
                 onError={() => setImgError(true)}
             />

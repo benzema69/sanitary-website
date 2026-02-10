@@ -4,6 +4,7 @@ import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import Section from '../Section';
 import { FAQ_ITEMS } from '../../data';
+import { useTranslation } from '../../contexts/LanguageContext';
 
 interface FAQProps {
     toggleAccordion: (index: number) => void;
@@ -20,6 +21,7 @@ const fadeInUp: Variants = {
 };
 
 const FAQ: React.FC<FAQProps> = ({ toggleAccordion, activeAccordion }) => {
+    const { t } = useTranslation();
     return (
         <Section id="faq" className="bg-white">
             <div className="container mx-auto max-w-4xl">
@@ -30,8 +32,8 @@ const FAQ: React.FC<FAQProps> = ({ toggleAccordion, activeAccordion }) => {
                     variants={fadeInUp}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl font-bold text-slate-900 mb-4">Questions Fréquentes</h2>
-                    <p className="text-slate-600">Des réponses claires pour vos interrogations.</p>
+                    <h2 className="text-3xl font-bold text-slate-900 mb-4">{t('faq.title')}</h2>
+                    <p className="text-slate-600">{t('faq.subtitle')}</p>
                 </motion.div>
 
                 <div className="space-y-4">
@@ -44,7 +46,7 @@ const FAQ: React.FC<FAQProps> = ({ toggleAccordion, activeAccordion }) => {
                                 onClick={() => toggleAccordion(i)}
                                 className="flex justify-between items-center w-full p-6 text-left font-bold text-slate-900 hover:text-cyan-700 transition-colors"
                             >
-                                <span>{item.question}</span>
+                                <span>{t(item.question)}</span>
                                 <ChevronDown
                                     className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${activeAccordion === i ? 'rotate-180 text-cyan-600' : ''}`}
                                 />
@@ -58,7 +60,7 @@ const FAQ: React.FC<FAQProps> = ({ toggleAccordion, activeAccordion }) => {
                                         transition={{ duration: 0.3, ease: "easeInOut" }}
                                     >
                                         <div className="px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100/50 pt-4">
-                                            {item.answer}
+                                            {t(item.answer)}
                                         </div>
                                     </motion.div>
                                 )}

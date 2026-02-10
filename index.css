@@ -1,45 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@theme {
+    --font-sans: 'Outfit', sans-serif;
+    --color-cyan-600: #0891b2;
+    --color-slate-900: #0f172a;
+
+    --animate-blob: blob 7s infinite;
+
+    @keyframes blob {
+        0% {
+            transform: translate(0px, 0px) scale(1);
+        }
+
+        33% {
+            transform: translate(30px, -50px) scale(1.1);
+        }
+
+        66% {
+            transform: translate(-20px, 20px) scale(0.9);
+        }
+
+        100% {
+            transform: translate(0px, 0px) scale(1);
+        }
+    }
+}
 
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #ffffff;
-    color: #0f172a;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
+    @apply bg-white text-slate-900 font-sans antialiased overflow-x-hidden;
 }
 
 /* Premium Selection */
 ::selection {
-    background-color: #0e7490;
-    /* cyan-700 */
-    color: #ffffff;
+    @apply bg-cyan-600 text-white;
 }
 
-/* Custom Scrollbar - Premium Feel */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f5f9;
-    /* slate-100 */
+    @apply bg-slate-100;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    /* slate-300 */
-    border-radius: 5px;
-    border: 2px solid #f1f5f9;
-    /* Creates a padding effect */
+    @apply bg-slate-300 rounded-md border-2 border-slate-100;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
-    /* slate-400 */
+    @apply bg-slate-400;
 }
 
 /* Firefox */
@@ -48,32 +64,15 @@ body {
     scrollbar-color: #cbd5e1 #f1f5f9;
 }
 
-@keyframes blob {
-    0% {
-        transform: translate(0px, 0px) scale(1);
-    }
+/* B3: Wave typing indicator */
+@keyframes wave {
 
-    33% {
-        transform: translate(30px, -50px) scale(1.1);
-    }
-
-    66% {
-        transform: translate(-20px, 20px) scale(0.9);
-    }
-
+    0%,
     100% {
-        transform: translate(0px, 0px) scale(1);
+        height: 4px;
     }
-}
 
-.animate-blob {
-    animation: blob 7s infinite;
-}
-
-.animation-delay-2000 {
-    animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-    animation-delay: 4s;
+    50% {
+        height: 16px;
+    }
 }

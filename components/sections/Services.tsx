@@ -5,6 +5,7 @@ import { Check, ArrowRight } from 'lucide-react';
 import Section from '../Section';
 import ServiceSkeleton from '../ServiceSkeleton';
 import { SERVICES } from '../../data';
+import { useTranslation } from '../../contexts/LanguageContext';
 
 interface ServicesSectionProps {
     areServicesLoading: boolean;
@@ -32,6 +33,7 @@ const staggerContainer: Variants = {
 };
 
 const ServicesSection: React.FC<ServicesSectionProps> = ({ areServicesLoading, setSelectedServiceId }) => {
+    const { t } = useTranslation();
     return (
         <Section id="services" className="bg-white">
             <div className="container mx-auto max-w-6xl">
@@ -42,10 +44,10 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ areServicesLoading, s
                     variants={fadeInUp}
                     className="mb-16"
                 >
-                    <h2 className="text-3xl font-bold text-slate-900 mb-4">Catalogue des Services</h2>
+                    <h2 className="text-3xl font-bold text-slate-900 mb-4">{t('services.page.title')}</h2>
                     <div className="h-1 w-24 bg-cyan-500 mb-6"></div>
                     <p className="text-slate-600 max-w-2xl">
-                        Une gamme complète de prestations sanitaires, du dépannage urgent à la rénovation complexe. Expertise certifiée.
+                        {t('services.page.subtitle')}
                     </p>
                 </motion.div>
 
@@ -68,8 +70,8 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ areServicesLoading, s
                                 key={service.id}
                                 variants={fadeInUp}
                                 className={`group p-8 rounded-xl border transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl flex flex-col cursor-default relative overflow-hidden ${service.highlight
-                                        ? 'bg-cyan-50 border-cyan-100'
-                                        : 'bg-white border-slate-100 hover:border-cyan-300'
+                                    ? 'bg-cyan-50 border-cyan-100'
+                                    : 'bg-white border-slate-100 hover:border-cyan-300'
                                     }`}
                             >
                                 <div className={`mb-6 p-3 w-fit rounded-lg shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 relative z-10 ${service.highlight ? 'bg-cyan-600 text-white' : 'bg-slate-50 text-cyan-700'
@@ -80,9 +82,9 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ areServicesLoading, s
                                 {/* Subtle hover gradient background */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-transparent to-cyan-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-                                <h3 className="text-xl font-bold text-slate-900 mb-2 relative z-10">{service.title}</h3>
+                                <h3 className="text-xl font-bold text-slate-900 mb-2 relative z-10">{t(service.title)}</h3>
                                 <p className="text-slate-600 text-sm mb-6 border-b border-slate-100 pb-4 leading-relaxed relative z-10">
-                                    {service.description}
+                                    {t(service.description)}
                                 </p>
 
                                 {/* Service Features List - SEO Optimized */}
@@ -90,7 +92,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ areServicesLoading, s
                                     {service.features.map((feature, idx) => (
                                         <li key={idx} className="flex items-start gap-2.5">
                                             <Check className={`w-4 h-4 mt-0.5 shrink-0 ${service.highlight ? 'text-cyan-700' : 'text-cyan-600'}`} />
-                                            <span className="text-sm text-slate-700 leading-snug">{feature}</span>
+                                            <span className="text-sm text-slate-700 leading-snug">{t(feature)}</span>
                                         </li>
                                     ))}
                                 </ul>

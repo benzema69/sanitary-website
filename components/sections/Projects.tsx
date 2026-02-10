@@ -1,9 +1,11 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Sparkles, MessageCircle, Check, Star, Loader2 } from 'lucide-react';
+import { Sparkles, MessageCircle, Check, Star, Loader2, ZoomIn } from 'lucide-react';
 import Section from '../Section';
+import Lightbox from '../Lightbox';
 import { PROJECTS } from '../../data';
+import { useTranslation } from '../../contexts/LanguageContext';
 
 interface ProjectsProps {
     handleAIProjectStart: () => void;
@@ -46,6 +48,12 @@ const Projects: React.FC<ProjectsProps> = ({
     setFormData,
     isFormSubmitting
 }) => {
+    const { t } = useTranslation();
+    const [lightboxOpen, setLightboxOpen] = useState(false);
+    const [lightboxIndex, setLightboxIndex] = useState(0);
+
+    const lightboxImages = PROJECTS.map(p => ({ src: p.img, title: p.title, tag: p.tag }));
+
     return (
         <Section id="projets" className="bg-white">
             <motion.div
@@ -55,8 +63,9 @@ const Projects: React.FC<ProjectsProps> = ({
                 viewport={{ once: true, margin: "-50px" }}
                 variants={staggerContainer}
             >
-                <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-slate-900 mb-4">Un projet ? Une idée ?</motion.h2>
-                <motion.p variants={fadeInUp} className="text-slate-600 mb-12">Je vous accompagne dans la réalisation de vos rêves. Choisissez comment vous souhaitez me contacter.</motion.p>
+
+                <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-slate-900 mb-4">{t('projects.title')}</motion.h2>
+                <motion.p variants={fadeInUp} className="text-slate-600 mb-12">{t('projects.subtitle')}</motion.p>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
@@ -74,18 +83,18 @@ const Projects: React.FC<ProjectsProps> = ({
                             <div className="relative z-10">
                                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-xs font-bold uppercase tracking-wider mb-4 border border-white/10">
                                     <Sparkles className="w-3 h-3 text-cyan-300" />
-                                    Nouveau
+                                    {t('projects.ai.badge')}
                                 </div>
-                                <h3 className="text-2xl font-bold mb-2">Pas envie de remplir le formulaire ?</h3>
+                                <h3 className="text-2xl font-bold mb-2">{t('projects.ai.title')}</h3>
                                 <p className="text-slate-300 mb-6 max-w-md">
-                                    Laissez notre assistant intelligent prendre les notes pour vous. Discutez simplement de votre projet, il s'occupe de tout remplir.
+                                    {t('projects.ai.text')}
                                 </p>
                                 <button
                                     onClick={handleAIProjectStart}
                                     className="bg-white text-slate-900 px-6 py-3 rounded-lg font-bold text-sm hover:bg-cyan-50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all flex items-center gap-2 shadow-md"
                                 >
                                     <MessageCircle className="w-4 h-4" />
-                                    Discuter avec l'Assistant
+                                    {t('projects.ai.btn')}
                                 </button>
                             </div>
                         </motion.div>
@@ -124,10 +133,10 @@ const Projects: React.FC<ProjectsProps> = ({
                                 onSubmit={handleFormSubmit}
                                 className="space-y-4 bg-slate-50 p-8 rounded-2xl border border-slate-100 relative"
                             >
-                                <div className="absolute top-4 right-4 text-xs font-bold text-slate-300 uppercase tracking-widest">Formulaire classique</div>
+                                <div className="absolute top-4 right-4 text-xs font-bold text-slate-300 uppercase tracking-widest">{t('projects.form.title')}</div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div className="flex flex-col gap-1">
-                                        <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Nom</label>
+                                        <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">{t('projects.form.name')}</label>
                                         <input
                                             required
                                             type="text"
@@ -138,7 +147,7 @@ const Projects: React.FC<ProjectsProps> = ({
                                         />
                                     </div>
                                     <div className="flex flex-col gap-1">
-                                        <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Téléphone</label>
+                                        <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-1">{t('projects.form.phone')}</label>
                                         <input
                                             required
                                             type="tel"
@@ -150,7 +159,7 @@ const Projects: React.FC<ProjectsProps> = ({
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-1">
-                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Email</label>
+                                    <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">{t('projects.form.email')}</label>
                                     <input
                                         required
                                         type="email"
@@ -161,14 +170,14 @@ const Projects: React.FC<ProjectsProps> = ({
                                     />
                                 </div>
                                 <div className="flex flex-col gap-1">
-                                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Description du projet</label>
+                                    <label htmlFor="description" className="block text-sm font-medium text-slate-700 mb-1">{t('projects.form.desc')}</label>
                                     <textarea
                                         required
                                         rows={4}
                                         name="description"
                                         value={formData.description}
                                         onChange={handleInputChange}
-                                        placeholder="Ex: Rénovation salle de bain, Fuite robinet, Nouveau chauffe-eau..."
+                                        placeholder={t('projects.form.placeholder')}
                                         className="w-full bg-white border border-slate-200 p-3 rounded focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
                                     ></textarea>
                                 </div>
@@ -180,10 +189,10 @@ const Projects: React.FC<ProjectsProps> = ({
                                     {isFormSubmitting ? (
                                         <>
                                             <Loader2 className="w-5 h-5 animate-spin" />
-                                            <span>Envoi en cours...</span>
+                                            <span>{t('projects.form.sending')}</span>
                                         </>
                                     ) : (
-                                        'Envoyer ma demande'
+                                        t('projects.form.submit')
                                     )}
                                 </button>
                             </motion.form>
@@ -192,21 +201,31 @@ const Projects: React.FC<ProjectsProps> = ({
 
                     {/* Gallery Side */}
                     <div className="lg:col-span-5">
-                        <motion.h3 variants={fadeInUp} className="text-lg font-bold text-slate-900 mb-6">Exemples de réalisations</motion.h3>
+                        <motion.h3 variants={fadeInUp} className="text-lg font-bold text-slate-900 mb-6">{t('projects.gallery.title')}</motion.h3>
                         <div className="grid grid-cols-1 gap-6">
                             {PROJECTS.map((project, i) => (
                                 <motion.div
                                     key={i}
                                     variants={fadeInUp}
-                                    className="flex gap-4 items-center p-4 bg-white border border-slate-100 rounded-lg hover:shadow-md hover:border-cyan-100 hover:translate-x-1 transition-all group cursor-default"
+                                    className="flex gap-4 items-center p-4 bg-white border border-slate-100 rounded-lg hover:shadow-md hover:border-cyan-100 hover:translate-x-1 transition-all group cursor-pointer"
+                                    onClick={() => { setLightboxIndex(i); setLightboxOpen(true); }}
                                 >
                                     <div className="w-24 h-24 bg-slate-200 rounded overflow-hidden shrink-0 relative">
-                                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
-                                        <img src={project.img} alt={project.title} className="w-full h-full object-cover" />
+                                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors flex items-center justify-center">
+                                            <ZoomIn className="w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" />
+                                        </div>
+                                        <picture>
+                                            <source srcSet={project.img.replace(/\.jpg$/, '.webp')} type="image/webp" />
+                                            <img src={project.img} alt={project.title} className="w-full h-full object-cover" loading="lazy" />
+                                        </picture>
                                     </div>
                                     <div>
-                                        <span className="text-xs font-bold uppercase text-cyan-600">{project.tag}</span>
-                                        <h4 className="font-bold text-slate-900">{project.title}</h4>
+                                        <span className="text-xs font-bold uppercase text-cyan-600">
+                                            {project.tag === 'Rénovation' ? t('projects.tag.renovation') :
+                                                project.tag === 'Installation' ? t('projects.tag.installation') :
+                                                    project.tag === 'Sanitaire' ? t('projects.tag.sanitary') : project.tag}
+                                        </span>
+                                        <h4 className="font-bold text-slate-900">{t(project.title)}</h4>
                                     </div>
                                 </motion.div>
                             ))}
@@ -216,12 +235,20 @@ const Projects: React.FC<ProjectsProps> = ({
                             className="mt-8 p-6 bg-cyan-50 rounded-lg border border-cyan-100 text-sm text-cyan-900 italic flex gap-3 items-start"
                         >
                             <Star className="w-5 h-5 shrink-0 fill-cyan-900/20" />
-                            "Je travaille avec les meilleurs fournisseurs pour garantir une longévité maximale à vos installations. Pas d'obsolescence programmée ici."
+                            "{t('projects.quality_commitment')}"
                         </motion.div>
                     </div>
 
                 </div>
             </motion.div>
+
+            <Lightbox
+                images={lightboxImages}
+                currentIndex={lightboxIndex}
+                isOpen={lightboxOpen}
+                onClose={() => setLightboxOpen(false)}
+                onNavigate={setLightboxIndex}
+            />
         </Section>
     );
 };

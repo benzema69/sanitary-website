@@ -3,6 +3,7 @@ import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { MapPin } from 'lucide-react';
 import { LOCATIONS } from '../../data';
+import { useTranslation } from '../../contexts/LanguageContext';
 
 const staggerContainer: Variants = {
     hidden: { opacity: 0 },
@@ -15,16 +16,17 @@ const staggerContainer: Variants = {
     }
 };
 
-const fadeInUp: Variants = {
-    hidden: { opacity: 0, y: 60 },
+const scaleIn: Variants = {
+    hidden: { opacity: 0, scale: 0.85 },
     visible: {
         opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: "easeOut" }
+        scale: 1,
+        transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
     }
 };
 
 const Locations: React.FC = () => {
+    const { t } = useTranslation();
     return (
         <div className="py-16 bg-slate-50 border-y border-slate-200">
             <div className="container mx-auto max-w-6xl px-6">
@@ -39,8 +41,8 @@ const Locations: React.FC = () => {
                         <MapPin className="w-6 h-6 text-cyan-700" />
                     </div>
                     <div>
-                        <h2 className="text-2xl font-bold text-slate-900">Zone d'Intervention - La Côte</h2>
-                        <p className="text-slate-500 text-sm">Service de proximité rapide et efficace</p>
+                        <h2 className="text-2xl font-bold text-slate-900">{t('locations.title')}</h2>
+                        <p className="text-slate-500 text-sm">{t('locations.subtitle')}</p>
                     </div>
                 </motion.div>
 
@@ -52,14 +54,14 @@ const Locations: React.FC = () => {
                     viewport={{ once: true }}
                 >
                     {[
-                        { title: "Cœur de La Côte", list: LOCATIONS.center, color: "border-cyan-500" },
-                        { title: "Est (Vers Nyon)", list: LOCATIONS.east, color: "border-slate-300" },
-                        { title: "Ouest (Vers Morges)", list: LOCATIONS.west, color: "border-slate-300" },
-                        { title: "Nord (Pied du Jura)", list: LOCATIONS.north, color: "border-slate-300" },
+                        { title: t('locations.center'), list: LOCATIONS.center, color: "border-cyan-500" },
+                        { title: t('locations.east'), list: LOCATIONS.east, color: "border-slate-300" },
+                        { title: t('locations.west'), list: LOCATIONS.west, color: "border-slate-300" },
+                        { title: t('locations.north'), list: LOCATIONS.north, color: "border-slate-300" },
                     ].map((zone, i) => (
                         <motion.div
                             key={i}
-                            variants={fadeInUp}
+                            variants={scaleIn}
                             className={`bg-white p-6 rounded-xl border-t-4 shadow-sm ${zone.color}`}
                         >
                             <h3 className="font-bold text-slate-900 mb-4 text-base">{zone.title}</h3>
@@ -74,7 +76,7 @@ const Locations: React.FC = () => {
                     ))}
                 </motion.div>
                 <p className="mt-8 text-xs text-center text-slate-400 italic">
-                    * Intervention possible hors zone sur demande spécifique pour chantiers de rénovation.
+                    {t('locations.note')}
                 </p>
             </div>
         </div>

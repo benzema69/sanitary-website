@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://chappuis-sanitaire.ch/sitemap.xml
