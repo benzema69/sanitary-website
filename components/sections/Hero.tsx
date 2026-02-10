@@ -11,7 +11,17 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ scrollTo }) => {
     return (
-        <Section id="hero" className="min-h-[85vh] flex flex-col justify-center border-b border-slate-100 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
+        <Section id="hero" className="min-h-[85vh] flex flex-col justify-center border-b border-slate-100 bg-slate-50 relative overflow-hidden">
+            {/* Background Image with Overlay */}
+            <div className="absolute inset-0 z-0">
+                <img
+                    src="https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=2000&auto=format&fit=crop"
+                    alt="Background"
+                    className="w-full h-full object-cover opacity-10 grayscale-[30%] blur-[2px]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white/95" />
+            </div>
+
             {/* Animated Background Elements */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob" />
             <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-sky-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000" />

@@ -201,17 +201,17 @@ export const LOCATIONS = {
 export const PROJECTS = [
   {
     title: 'Rénovation Complète',
-    img: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=600&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=600&auto=format&fit=crop',
     tag: 'Rénovation'
   },
   {
     title: 'Installation Technique',
-    img: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=600&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=600&auto=format&fit=crop',
     tag: 'Installation'
   },
   {
     title: 'Robinetterie KWC',
-    img: 'https://images.unsplash.com/photo-1594498653385-d5172c532c00?q=80&w=600&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=600&auto=format&fit=crop',
     tag: 'Sanitaire'
   }
 ];
