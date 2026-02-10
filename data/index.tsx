@@ -142,22 +142,27 @@ export const PARTNERS = [
   {
     name: "Geberit",
     type: "image",
-    url: geberitLogo
+    url: geberitLogo,
+    theme: "light"
   },
   {
     name: "Laufen",
     type: "image",
-    url: laufenLogo
+    url: laufenLogo,
+    theme: "light"
   },
   {
     name: "KWC",
     type: "image",
-    url: kwcLogo
+    url: kwcLogo,
+    theme: "native",
+    logoClassName: "opacity-90"
   },
   {
     name: "Getaz-Miauton",
     type: "image",
-    url: getazLogo
+    url: getazLogo,
+    theme: "light"
   }
 ];
 
