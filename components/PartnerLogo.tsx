@@ -9,19 +9,22 @@ interface Partner {
 }
 
 const PartnerLogo: React.FC<{ partner: Partner }> = ({ partner }) => {
-    if (partner.type === 'image' && partner.url) {
+    const [imgError, setImgError] = React.useState(false);
+
+    if (partner.type === 'image' && partner.url && !imgError) {
         return (
             <img
                 src={partner.url}
                 alt={`Logo ${partner.name}`}
                 className="h-16 md:h-20 w-auto object-contain hover:scale-110 transition-transform duration-300"
                 loading="lazy"
+                onError={() => setImgError(true)}
             />
         );
     }
 
     return (
-        <div className={`text-slate-900 text-xl hover:scale-110 transition-transform whitespace-nowrap ${partner.style || ''}`}>
+        <div className={`text-slate-900 text-xl font-bold hover:scale-110 transition-transform whitespace-nowrap ${partner.style || ''}`}>
             {partner.name}
         </div>
     );

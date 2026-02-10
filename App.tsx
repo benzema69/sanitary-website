@@ -4,12 +4,12 @@
 */
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Phone, Check, Menu, X, PhoneCall } from 'lucide-react';
+import { Phone, Menu, X, PhoneCall } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AIChat, { AIChatHandle } from './components/AIChat';
 import ServicePage from './components/ServicePage';
 import { SERVICE_DETAILS } from './data/serviceDetails';
-import { PHONE_DISPLAY, PHONE_HREF, EMAIL, NAV_LINKS, FAQ_ITEMS, TESTIMONIALS } from './data';
+import { PHONE_DISPLAY, PHONE_HREF, NAV_LINKS, FAQ_ITEMS, TESTIMONIALS } from './data';
 import { sendProjectEmail } from './services/emailService';
 
 // Component Imports

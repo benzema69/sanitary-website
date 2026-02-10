@@ -1,6 +1,6 @@
 
-import { Phone, Check, Clock, ShieldCheck, ArrowRight, MapPin, Wrench, Droplet, Hammer, Sun, Star, Menu, X, Waves, PenTool, PhoneCall, Flame, Bath, WashingMachine, Sparkles, MessageCircle, FileText, Lock, Cookie, ChevronDown } from 'lucide-react';
-import React from 'react';
+import { Wrench, Waves, Sun, Flame, Bath, WashingMachine } from 'lucide-react';
+
 
 // --- CONSTANTS ---
 export const PHONE_DISPLAY = "078 657 73 65";

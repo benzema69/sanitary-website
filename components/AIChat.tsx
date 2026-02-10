@@ -4,7 +4,7 @@
 */
 
 import React, { useState, useRef, useEffect, useImperativeHandle, forwardRef } from 'react';
-import { MessageSquare, X, Send, User, Bot, Sparkles } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { sendMessageToGemini } from '../services/geminiService';
 import { ChatMessage } from '../types';
@@ -25,15 +25,6 @@ const AIChat = forwardRef<AIChatHandle, AIChatProps>(({ onProjectData }, ref) =>
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
-
-  // Expose methods to parent
-  useImperativeHandle(ref, () => ({
-    openWithContext: (initialMessage: string) => {
-      setIsOpen(true);
-      // Simulate user sending a message automatically
-      handleSend(initialMessage, true); 
-    }
-  }));
 
   const scrollToBottom = () => {
     if (chatContainerRef.current) {
@@ -60,7 +51,7 @@ const AIChat = forwardRef<AIChatHandle, AIChatProps>(({ onProjectData }, ref) =>
     setTimeout(scrollToBottom, 100);
 
     const rawResponse = await sendMessageToGemini(messageText);
-    
+
     // Check for JSON Data in response
     const jsonMatch = rawResponse.match(/```json\s*([\s\S]*?)\s*```/);
     let displayText = rawResponse;
@@ -72,7 +63,7 @@ const AIChat = forwardRef<AIChatHandle, AIChatProps>(({ onProjectData }, ref) =>
           // Remove the JSON block from the text displayed to user
           displayText = rawResponse.replace(/```json[\s\S]*?```/, '').trim();
           if (!displayText) displayText = "Parfait, j'ai noté toutes vos informations. Je transmets votre dossier immédiatement.";
-          
+
           // Trigger parent callback
           onProjectData(jsonData.data);
         }
@@ -84,6 +75,15 @@ const AIChat = forwardRef<AIChatHandle, AIChatProps>(({ onProjectData }, ref) =>
     setMessages(prev => [...prev, { role: 'model', text: displayText }]);
     setIsLoading(false);
   };
+
+  // Expose methods to parent
+  useImperativeHandle(ref, () => ({
+    openWithContext: (initialMessage: string) => {
+      setIsOpen(true);
+      // Simulate user sending a message automatically
+      handleSend(initialMessage, true);
+    }
+  }));
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end pointer-events-auto font-sans">
@@ -107,7 +107,7 @@ const AIChat = forwardRef<AIChatHandle, AIChatProps>(({ onProjectData }, ref) =>
             </div>
 
             {/* Messages */}
-            <div 
+            <div
               ref={chatContainerRef}
               className="h-80 overflow-y-auto p-4 space-y-4 bg-slate-50"
             >
@@ -117,16 +117,15 @@ const AIChat = forwardRef<AIChatHandle, AIChatProps>(({ onProjectData }, ref) =>
                   className={`flex gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   {msg.role === 'model' && (
-                     <div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center shrink-0">
-                        {msg.text.includes('dossier') ? <Sparkles className="w-3 h-3 text-cyan-600" /> : <Bot className="w-3 h-3 text-slate-600" />}
-                     </div>
+                    <div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center shrink-0">
+                      {msg.text.includes('dossier') ? <Sparkles className="w-3 h-3 text-cyan-600" /> : <Bot className="w-3 h-3 text-slate-600" />}
+                    </div>
                   )}
                   <div
-                    className={`max-w-[80%] p-3 rounded-lg text-sm leading-relaxed ${
-                      msg.role === 'user'
-                        ? 'bg-slate-900 text-white rounded-br-none'
-                        : 'bg-white text-slate-800 border border-slate-200 rounded-bl-none shadow-sm'
-                    }`}
+                    className={`max-w-[80%] p-3 rounded-lg text-sm leading-relaxed ${msg.role === 'user'
+                      ? 'bg-slate-900 text-white rounded-br-none'
+                      : 'bg-white text-slate-800 border border-slate-200 rounded-bl-none shadow-sm'
+                      }`}
                   >
                     {msg.text}
                   </div>
@@ -134,9 +133,9 @@ const AIChat = forwardRef<AIChatHandle, AIChatProps>(({ onProjectData }, ref) =>
               ))}
               {isLoading && (
                 <div className="flex justify-start gap-2">
-                   <div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center shrink-0">
-                        <Bot className="w-3 h-3 text-slate-600" />
-                   </div>
+                  <div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center shrink-0">
+                    <Bot className="w-3 h-3 text-slate-600" />
+                  </div>
                   <div className="bg-white p-3 rounded-lg rounded-bl-none border border-slate-200 shadow-sm flex gap-1 items-center h-10">
                     <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                     <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
