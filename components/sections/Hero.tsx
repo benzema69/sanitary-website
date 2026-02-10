@@ -42,11 +42,12 @@ const Hero: React.FC<HeroProps> = ({ scrollTo }) => {
                     </h1>
 
                     <p className="text-2xl md:text-3xl font-medium text-slate-700 mb-8">
-                        L'Art du Sanitaire Suisse. <span className="text-slate-400 font-normal">Expérience depuis 1980.</span>
+                        L'Art du Sanitaire Suisse. <span className="text-slate-400 font-normal">Expertise depuis 1980.</span>
                     </p>
 
                     <p className="text-lg text-slate-600 max-w-lg mb-10 leading-relaxed font-light">
-                        Expertise technique et finition haut de gamme pour vos projets les plus exigeants sur La Côte.
+                        Votre <strong>Artisan de Confiance</strong> à Rolle et sur La Côte.
+                        Sans intermédiaire, réparations durables et finitions soignées.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 mb-16">

@@ -20,110 +20,112 @@ export const SERVICES = [
   {
     id: 'urgences',
     title: 'Intervention Rapide & Dépannage',
-    description: 'Service d\'urgence sanitaire. Recherche de fuites et réparations immédiates.',
+    description: 'Le "Sauveur" local : Je suis disponible 7j/7 pour vos urgences vitales sur La Côte.',
     icon: Wrench,
     highlight: true,
     features: [
-      "Recherche & réparation de fuites (visibles/encastrées)",
-      "Débouchage canalisations (WC, éviers, colonnes)",
+      "Intervention en 2h à 4h sur zone (Rolle - Nyon - Morges)",
+      "Véhicule atelier : 90% des pannes résolues immédiatement",
+      "Recherche de fuites (Visuelle & Technique)",
+      "Débouchage express (WC, éviers, colonnes)",
       "Remplacement robinetterie & vannes d'arrêt",
-      "Réparation chasses d'eau (mécanismes, joints)",
-      "Dépannage production d'eau chaude (Boilers)",
-      "Remplacement de siphons et bondes",
-      "Intervention dégâts des eaux (Mise en sécurité)"
+      "Réparation chasses d'eau (Geberit & autres)",
+      "Dépannage production d'eau chaude (Boilers)"
     ]
   },
   {
     id: 'sdb',
-    title: 'Votre Salle de Bains de A à Z',
-    description: 'Conception et réalisation clé en main. Du rêve à la réalité.',
+    title: 'Création de Salle de Bains "Clé en main"',
+    description: 'Votre projet de A à Z, géré par mon expertise. Du design à la pose du dernier joint.',
     icon: Bath,
     features: [
-      "Conception & Réalisation complète (Neuf/Rénovation)",
-      "Douches à l'italienne & receveurs extra-plats",
+      "Conception complète & Conseil personnalisé",
+      "Transformation Baignoire en Douche à l'italienne",
       "Pose de baignoires (Îlot, Balnéo, Angle)",
-      "Installation WC suspendus (Geberit) & Lavants",
-      "Remplacement rapide de baignoire par une douche",
-      "Aménagement PMR & Seniors (Sécurité, Barres)",
-      "Pose de meubles & Raccordements complets"
+      "Installation WC suspendus Geberit & WC Lavants",
+      "Adaptation PMR & Seniors (Maintien à domicile sécurisé)",
+      "Finitions soignées 'Swiss Finish'",
+      "Coordination des travaux avec le carrelage"
     ]
   },
   {
     id: 'traitement',
-    title: 'Qualité de l\'Eau & Adoucisseurs',
-    description: 'Solutions techniques pour lutter contre le calcaire et purifier votre eau.',
+    title: 'Traitement de l\'Eau & Adoucisseurs',
+    description: 'Protégez votre patrimoine immobilier contre le calcaire agressif de notre région.',
     icon: Waves,
     features: [
-      "Installation & Maintenance d'adoucisseurs d'eau",
-      "Livraison de sel & Nettoyage résines",
+      "Expertise dureté de l'eau locale",
+      "Installation Adoucisseurs & Osmoseurs",
+      "Maintenance & Livraison de sel",
       "Filtres anti-boue et anti-tartre",
       "Systèmes de filtration d'eau de boisson",
-      "Osmoseurs & Fontaines sous évier",
-      "Surpresseurs & Réducteurs de pression"
+      "Protection durable de votre tuyauterie"
     ]
   },
   {
     id: 'technique',
-    title: 'Chauffe-eau & Installations Techniques',
-    description: 'Expertise thermique pour votre production d\'eau chaude sanitaire.',
+    title: 'Chauffe-eau & Thermique',
+    description: 'Solutions durables pour votre eau chaude sanitaire. Installation & Transition énergétique.',
     icon: Sun,
     features: [
-      "Remplacement Boilers électriques tous volumes",
-      "Installation Boilers Pompe à Chaleur (PAC)",
+      "Remplacement Boilers électriques (Toutes marques)",
+      "Installation Chauffe-eau Pompe à Chaleur (PAC)",
       "Détartrage & Maintenance préventive",
       "Remplacement groupes de sécurité",
-      "Circulateurs (Bouclage ECS pour eau chaude instantanée)"
+      "Bouclage ECS (Eau chaude instantanée)",
+      "Conseil en économie d'énergie"
     ]
   },
   {
     id: 'cuisine',
-    title: 'Raccordements Cuisines & Électroménager',
-    description: 'Installations soignées pour votre cuisine et buanderie.',
+    title: 'Cuisine & Raccordements Précis',
+    description: 'La touche finale de votre cuisine : raccordements invisibles et sécurisés.',
     icon: WashingMachine,
     features: [
+      "Collaboration précise avec votre cuisiniste",
       "Raccordement Lave-linge & Lave-vaisselle",
-      "Pose éviers & robinetterie cuisine",
+      "Pose éviers & robinetterie (KWC, etc.)",
       "Installation broyeurs d'évier",
-      "Raccordement eau Frigos américains",
-      "Création d'alimentations et vidanges sur mesure"
+      "Raccordement frigos américains",
+      "Modifications des arrivées d'eau sur mesure"
     ]
   },
   {
     id: 'canalisations',
-    title: 'Réseaux, Gaz & Canalisations',
-    description: 'Haute technicité pour l\'inspection et la rénovation des réseaux.',
+    title: 'Inspection & Gaz (Certifié)',
+    description: 'Haute technicité : Inspection par caméra et travaux sur gaz certifiés SSIGE.',
     icon: Flame,
     features: [
-      "Inspection vidéo de canalisations (Caméra)",
+      "Inspection vidéo par caméra endoscopique",
+      "Détection précise de cassures ou racines",
       "Curage haute pression des réseaux",
-      "Installations conduites de gaz & Contrôle étanchéité",
-      "Remise à neuf colonnes de chute (Fonte/PVC/PE)",
-      "Raccordement réseau communal (Introduction)",
-      "Installation robinets extérieurs (Arrosage)"
+      "Installations Gaz certifiées SSIGE (Sécurité maximale)",
+      "Remise à neuf colonnes de chute",
+      "Raccordement aux réseaux communaux"
     ]
   }
 ];
 
 export const FAQ_ITEMS = [
   {
-    question: "Les devis sont-ils gratuits ?",
-    answer: "Oui, tous mes devis pour les travaux de rénovation, d'installation ou de remplacement sont gratuits et sans engagement. Cependant, pour les recherches de fuites complexes nécessitant l'utilisation de mon matériel de détection spécifique (caméra, gaz traceur), un forfait de diagnostic peut être appliqué."
+    question: "Qui réalisera les travaux chez moi ?",
+    answer: "Moi-même, Monsieur Chappuis. Je suis votre interlocuteur unique, de la prise de rendez-vous à la réalisation des travaux. C'est l'assurance d'un travail cohérent, sans sous-traitance, et d'une responsabilité totale engagée sur le résultat."
   },
   {
-    question: "Quels sont vos délais d'intervention ?",
-    answer: "Pour les urgences vitales (inondation majeure, rupture de canalisation, panne totale d'eau chaude en hiver), je m'efforce d'intervenir dans les 2 à 4 heures sur La Côte. Pour les dépannages courants, mon délai est généralement de 24 à 48 heures ouvrables."
+    question: "Les devis sont-ils gratuits ?",
+    answer: "Oui, totalement. Je me déplace gratuitement pour évaluer vos projets de rénovation ou d'installation. C'est l'occasion de vous conseiller sur le meilleur matériel. Seules les recherches de fuites complexes avec matériel spécifique peuvent faire l'objet d'un forfait diagnostic (annoncé à l'avance)."
   },
   {
     question: "Quelle est votre zone d'intervention ?",
-    answer: "J'interviens principalement sur toute La Côte vaudoise, de Versoix à Morges, incluant Nyon, Gland, Rolle, Aubonne et les communes du pied du Jura. Pour des chantiers de rénovation importants, je peux étudier des demandes légèrement au-delà de ce périmètre."
+    answer: "Je reste fidèle à ma région : La Côte. J'interviens de Versoix à Morges, en passant par Nyon, Gland, Rolle (mon siège), Aubonne et le pied du Jura. Cette proximité géographique est la clé de ma réactivité et de ma ponctualité."
   },
   {
-    question: "Vos travaux sont-ils garantis ?",
-    answer: "Absolument. En tant qu'entreprise suisse qualifiée (CFC/Maîtrise), tous mes travaux d'installation sont garantis selon les normes SIA en vigueur. J'assure personnellement le service après-vente du matériel installé."
+    question: "Quelles marques installez-vous ?",
+    answer: "Je privilégie la qualité durable. Je travaille principalement avec des marques suisses et leaders comme Geberit, KWC, Laufen, ou internationaux comme Villeroy & Boch. Je refuse le matériel 'low-cost' qui ne tient pas dans le temps. Votre tranquillité est ma priorité."
   },
   {
-    question: "Travaillez-vous avec des régies immobilières ?",
-    answer: "Oui, je collabore régulièrement avec plusieurs régies de la région pour l'entretien et le dépannage de parcs immobiliers. Je suis habitué à gérer la coordination avec les locataires."
+    question: "Travaillez-vous avec des régies ?",
+    answer: "Oui, je suis le partenaire de confiance de plusieurs régies immobilières de la région. J'ai l'habitude de gérer la maintenance de parcs immobiliers, avec le tact nécessaire pour intervenir chez les locataires."
   }
 ];
 
