@@ -11,14 +11,11 @@ interface Partner {
 }
 
 const PartnerLogo: React.FC<{ partner: Partner }> = ({ partner }) => {
-<<<<<<< HEAD
     const [imgError, setImgError] = React.useState(false);
 
     if (partner.type === 'image' && partner.url && !imgError) {
-=======
-    if (partner.type === 'image' && partner.url) {
         const logoSource = partner.theme === 'light' && partner.lightUrl ? partner.lightUrl : partner.url;
->>>>>>> 90422f1a0f9d07f57ba851d1d2c3d45a776d983e
+
         return (
             <img
                 src={logoSource}
