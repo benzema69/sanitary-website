@@ -132,12 +132,14 @@ import geberitLogo from '../assets/partners/geberit.png';
 import kwcLogo from '../assets/partners/kwc.png';
 import getazLogo from '../assets/partners/getaz.png';
 import laufenLogo from '../assets/partners/laufen.png';
+import sanitasTroeschLogo from '../assets/partners/sanitas-troesch.svg';
+import villeroyBochLogo from '../assets/partners/villeroy-boch.svg';
 
 export const PARTNERS = [
   {
     name: "Sanitas Troesch",
-    type: "text",
-    style: "font-bold tracking-tight italic"
+    type: "image",
+    url: sanitasTroeschLogo
   },
   {
     name: "Geberit",
@@ -158,6 +160,11 @@ export const PARTNERS = [
     name: "Getaz-Miauton",
     type: "image",
     url: getazLogo
+  },
+  {
+    name: "Villeroy & Boch",
+    type: "image",
+    url: villeroyBochLogo
   }
 ];
 
