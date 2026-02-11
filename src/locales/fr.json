@@ -46,6 +46,7 @@
     "projects.form.phone": "Téléphone",
     "projects.form.email": "Email",
     "projects.form.desc": "Description du projet",
+    "projects.form.placeholder": "Décrivez votre projet ici (type de travaux, urgence, etc.)...",
     "projects.form.submit": "Envoyer ma demande",
     "projects.form.sending": "Envoi en cours...",
     "projects.gallery.title": "Exemples de réalisations",

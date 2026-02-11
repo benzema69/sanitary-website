@@ -85,7 +85,7 @@ const Contact: React.FC<ContactProps> = ({ scrollTo }) => {
                 >
                     <iframe
                         title="Chappuis Sanitaire - Rolle"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2750.5!2d6.3356!3d46.4598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c3458c4e77e6f%3A0x5c694a4c8b1decd7!2s1180%20Rolle!5e0!3m2!1sfr!2sch!4v1707500000000!5m2!1sfr!2sch"
+                        src="https://maps.google.com/maps?q=Chemin+de+Plein-Air+1,+1180+Rolle&t=&z=15&ie=UTF8&iwloc=&output=embed"
                         width="100%"
                         height="280"
                         style={{ border: 0, filter: 'grayscale(0.3) contrast(1.1)' }}
