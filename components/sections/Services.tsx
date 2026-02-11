@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion, Variants } from 'framer-motion';
 import { Check, ArrowRight } from 'lucide-react';
 import Section from '../Section';
@@ -9,7 +10,6 @@ import { useTranslation } from '../../contexts/LanguageContext';
 
 interface ServicesSectionProps {
     areServicesLoading: boolean;
-    setSelectedServiceId: (id: string) => void;
 }
 
 const fadeInUp: Variants = {
@@ -32,7 +32,7 @@ const staggerContainer: Variants = {
     }
 };
 
-const ServicesSection: React.FC<ServicesSectionProps> = ({ areServicesLoading, setSelectedServiceId }) => {
+const ServicesSection: React.FC<ServicesSectionProps> = ({ areServicesLoading }) => {
     const { t } = useTranslation();
     return (
         <Section id="services" className="bg-white">
@@ -98,12 +98,12 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ areServicesLoading, s
                                 </ul>
 
                                 {/* Micro-interaction: Bottom link appears - MODIFIED to set selected service */}
-                                <button
-                                    onClick={() => setSelectedServiceId(service.id)}
+                                <Link
+                                    to={`/service/${service.id}`}
                                     className="mt-6 pt-4 border-t border-slate-50 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 flex items-center text-xs font-bold text-cyan-700 uppercase tracking-wider relative z-10 w-full text-left"
                                 >
                                     En savoir plus <ArrowRight className="w-3 h-3 ml-2" />
-                                </button>
+                                </Link>
                             </motion.div>
                         ))
                     )}

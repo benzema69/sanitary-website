@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Phone, Menu, X, PhoneCall } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AIChat, { AIChatHandle } from './AIChat';
-import ServicePage from './ServicePage';
-import { SERVICE_DETAILS } from '../data/serviceDetails';
 import { PHONE_DISPLAY, PHONE_HREF, NAV_LINKS, FAQ_ITEMS, TESTIMONIALS } from '../data';
 import { sendProjectEmail } from '../services/emailService';
 
@@ -36,7 +34,6 @@ const Home: React.FC = () => {
     const [formData, setFormData] = useState({ name: '', phone: '', email: '', description: '' });
     const [activeLegalPage, setActiveLegalPage] = useState<LegalPage>(null);
     const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
-    const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
     const [areServicesLoading, setAreServicesLoading] = useState(true);
     const [showSplash, setShowSplash] = useState(true);
 
@@ -50,13 +47,10 @@ const Home: React.FC = () => {
 
     // SEO Management
     useEffect(() => {
-        // If no specific service is selected, we are on the homepage
-        if (!selectedServiceId) {
-            document.title = "Chappuis Sanitaire Sàrl | Plombier Rolle & La Côte (Vaud)";
-            const metaDesc = document.querySelector('meta[name="description"]');
-            if (metaDesc) {
-                metaDesc.setAttribute('content', "Artisan sanitaire qualifié depuis 2004. Dépannage urgence 7j/7, rénovation salle de bain, détartrage boiler et adoucisseurs. Intervention rapide à Rolle, Nyon, Morges et Aubonne.");
-            }
+        document.title = "Chappuis Sanitaire Sàrl | Plombier Rolle & La Côte (Vaud)";
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+            metaDesc.setAttribute('content', "Artisan sanitaire qualifié depuis 2004. Dépannage urgence 7j/7, rénovation salle de bain, détartrage boiler et adoucisseurs. Intervention rapide à Rolle, Nyon, Morges et Aubonne.");
         }
 
         // Inject JSON-LD Schema for LocalBusiness
@@ -105,7 +99,7 @@ const Home: React.FC = () => {
         return () => {
             document.head.removeChild(schemaScript);
         };
-    }, [selectedServiceId]);
+    }, []);
 
     // Scroll Spy for Active Link
     useEffect(() => {
@@ -159,27 +153,12 @@ const Home: React.FC = () => {
     }, []);
 
     const scrollTo = (id: string) => {
-        // If we are on a service detail page, we go back home first
-        if (selectedServiceId) {
-            setSelectedServiceId(null);
-            // Wait for re-render then scroll
-            setTimeout(() => {
-                const el = document.getElementById(id);
-                if (el) {
-                    const offset = 80;
-                    const elementPosition = el.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.scrollY - offset;
-                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                }
-            }, 100);
-        } else {
-            const el = document.getElementById(id);
-            if (el) {
-                const offset = 80;
-                const elementPosition = el.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.scrollY - offset;
-                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-            }
+        const el = document.getElementById(id);
+        if (el) {
+            const offset = 80;
+            const elementPosition = el.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - offset;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
         setMobileMenuOpen(false);
     };
@@ -219,7 +198,6 @@ const Home: React.FC = () => {
         setFormData(data);
         setFormSuccess(true);
         // Optionally scroll to the success message (we might need to switch back to home if we are on service page)
-        if (selectedServiceId) setSelectedServiceId(null);
         setTimeout(() => {
             const el = document.getElementById('projets');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -248,7 +226,7 @@ const Home: React.FC = () => {
             <header className="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 h-20 flex items-center shadow-sm transition-all duration-300">
                 <div className="container mx-auto px-6 flex justify-between items-center">
                     {/* Logo */}
-                    <div className="flex flex-col cursor-pointer group select-none" onClick={() => { setSelectedServiceId(null); window.scrollTo(0, 0); }}>
+                    <div className="flex flex-col cursor-pointer group select-none" onClick={() => { window.scrollTo(0, 0); }}>
                         <span className="font-bold text-xl tracking-tight text-slate-900 uppercase leading-none group-hover:text-cyan-700 transition-colors duration-300">Chappuis</span>
                         <span className="text-xs tracking-widest text-slate-500 uppercase mt-1">Sanitaire Sàrl</span>
                     </div>
@@ -294,7 +272,7 @@ const Home: React.FC = () => {
             <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-slate-200 p-3 flex gap-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
                 <button
                     onClick={() => scrollTo('projets')}
-                    className="flex-1 bg-white border border-slate-300 text-slate-900 py-3 rounded-lg font-bold text-sm flex items-center justify-center gap-2 active:scale-95 transition-transform"
+                    className="flex-1 bg-white border-slate-300 text-slate-900 py-3 rounded-lg font-bold text-sm flex items-center justify-center gap-2 active:scale-95 transition-transform"
                 >
                     Devis gratuit
                 </button>
@@ -335,42 +313,31 @@ const Home: React.FC = () => {
             </AnimatePresence>
 
             {/* MAIN CONTENT SWITCHER */}
-            {selectedServiceId && SERVICE_DETAILS[selectedServiceId] ? (
-                <ServicePage
-                    content={SERVICE_DETAILS[selectedServiceId]}
-                    onBack={() => setSelectedServiceId(null)}
-                    onOpenChat={() => handleOpenChatWithContext(`Bonjour, j'ai une question concernant votre service : ${SERVICE_DETAILS[selectedServiceId].title}`)}
-                    testimonials={TESTIMONIALS}
-                    faqItems={FAQ_ITEMS}
+            <main className="pt-20">
+                <Hero scrollTo={scrollTo} />
+                <ServicesSection
+                    areServicesLoading={areServicesLoading}
                 />
-            ) : (
-                <main className="pt-20">
-                    <Hero scrollTo={scrollTo} />
-                    <ServicesSection
-                        areServicesLoading={areServicesLoading}
-                        setSelectedServiceId={setSelectedServiceId}
-                    />
-                    <Partners />
-                    <About />
-                    <Locations />
-                    <Projects
-                        handleAIProjectStart={handleAIProjectStart}
-                        formSuccess={formSuccess}
-                        formData={formData}
-                        handleInputChange={handleInputChange}
-                        handleFormSubmit={handleFormSubmit}
-                        setFormSuccess={setFormSuccess}
-                        setFormData={setFormData}
-                        isFormSubmitting={isFormSubmitting}
-                    />
-                    <Testimonials />
-                    <FAQ
-                        toggleAccordion={toggleAccordion}
-                        activeAccordion={activeAccordion}
-                    />
-                    <Contact scrollTo={scrollTo} />
-                </main>
-            )}
+                <Partners />
+                <About />
+                <Locations />
+                <Projects
+                    handleAIProjectStart={handleAIProjectStart}
+                    formSuccess={formSuccess}
+                    formData={formData}
+                    handleInputChange={handleInputChange}
+                    handleFormSubmit={handleFormSubmit}
+                    setFormSuccess={setFormSuccess}
+                    setFormData={setFormData}
+                    isFormSubmitting={isFormSubmitting}
+                />
+                <Testimonials />
+                <FAQ
+                    toggleAccordion={toggleAccordion}
+                    activeAccordion={activeAccordion}
+                />
+                <Contact scrollTo={scrollTo} />
+            </main>
 
             <Footer scrollTo={scrollTo} setActiveLegalPage={setActiveLegalPage} />
         </div>

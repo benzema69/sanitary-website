@@ -1,6 +1,8 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PHONE_HREF, PHONE_DISPLAY, EMAIL, NAV_LINKS } from '../data';
+import { TARGET_LOCATIONS } from '../data/zones';
 import { useTranslation } from '../contexts/LanguageContext';
 
 type LegalPage = 'mentions' | 'privacy' | 'cookies' | null;
@@ -56,9 +58,35 @@ const Footer: React.FC<FooterProps> = ({ scrollTo, setActiveLegalPage }) => {
                         <li><button onClick={() => setActiveLegalPage('cookies')} className="hover:text-cyan-400 transition-colors">{t('legal.cookies')}</button></li>
                     </ul>
                 </div>
+
+                {/* SEO LINKS - HIDDEN ON MOBILE BUT VISIBLE FOR BOTS/DESKTOP */}
+                <div className="col-span-1 md:col-span-4 mt-8 pt-8 border-t border-slate-800">
+                    <h4 className="text-sm font-semibold text-slate-500 mb-4 uppercase tracking-wider">Interventions Fréquentes</h4>
+                    <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-slate-600">
+                        {TARGET_LOCATIONS.slice(0, 30).map((loc) => (
+                            <Link
+                                key={loc.slug}
+                                to={`/plombier/${loc.slug}`}
+                                className="hover:text-cyan-500 transition-colors"
+                            >
+                                Plombier {loc.name}
+                            </Link>
+                        ))}
+                        <span className="text-slate-700 mx-2">|</span>
+                        {TARGET_LOCATIONS.slice(0, 15).map((loc) => (
+                            <Link
+                                key={`san-${loc.slug}`}
+                                to={`/sanitaire/${loc.slug}`}
+                                className="hover:text-cyan-500 transition-colors"
+                            >
+                                Sanitaire {loc.name}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
             </div>
 
-            <div className="container mx-auto px-6 mt-12 pt-8 border-t border-slate-800 text-xs text-center md:text-left flex flex-col md:flex-row justify-between items-center">
+            <div className="container mx-auto px-6 mt-8 pt-8 border-t border-slate-800 text-xs text-center md:text-left flex flex-col md:flex-row justify-between items-center">
                 <p>&copy; {new Date().getFullYear()} Chappuis Sanitaire Sàrl. {t('footer.rights')}</p>
             </div>
         </footer>

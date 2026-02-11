@@ -85,7 +85,8 @@ export const SERVICES = [
       "services.cuisine.features.1",
       "services.cuisine.features.2",
       "services.cuisine.features.3",
-      "services.cuisine.features.4"
+      "services.cuisine.features.4",
+      "services.cuisine.features.5"
     ]
   },
   {
@@ -99,7 +100,8 @@ export const SERVICES = [
       "services.canalisations.features.2",
       "services.canalisations.features.3",
       "services.canalisations.features.4",
-      "services.canalisations.features.5"
+      "services.canalisations.features.5",
+      "services.canalisations.features.6"
     ]
   }
 ];
@@ -197,10 +199,41 @@ export const TESTIMONIALS = [
 ];
 
 export const LOCATIONS = {
-  center: ["Rolle", "Mont-sur-Rolle", "Perroy", "Gilly", "Tartegnin", "Essertines-sur-Rolle", "Bursinel", "Dully", "Bursins", "Vinzel", "Luins"],
-  east: ["Begnins", "Vich", "Coinsins", "Duillier", "Gland", "Prangins", "Nyon", "Eysins", "Signy-Avenex", "Gren", "Trélex", "Gingins", "Genolier", "Crans-près-Céligny"],
-  west: ["Allaman", "Féchy", "Bougy-Villars", "Aubonne", "Lavigny", "Etoy", "Buchillon", "Saint-Prex", "Lussy-sur-Morges", "Villars-sous-Yens", "Denens", "Yens", "Morges", "Vufflens-le-Château"],
-  north: ["Burtigny", "Le Vaud", "Marchissy", "Longirod", "Saint-George", "Gimel", "Saint-Oyens", "Saubraz", "Biere", "Berolle", "Mollens", "Ballens", "Apples", "Bussy-Chardonney", "Reverolle", "Clarmont", "Arzier-Le Muids", "Bassins"]
+  center: [
+    "Rolle", "Mont-sur-Rolle", "Perroy", "Gilly", "Tartegnin", "Essertines-sur-Rolle",
+    "Bursinel", "Dully", "Bursins", "Vinzel", "Luins"
+  ],
+  east: [
+    // Vers Nyon / Terre Sainte
+    "Begnins", "Vich", "Coinsins", "Duillier", "Gland", "Prangins", "Nyon", "Eysins",
+    "Signy-Avenex", "Gren", "Trélex", "Gingins", "Genolier", "Crans-près-Céligny",
+    "Céligny", "Arnex-sur-Nyon", "Borex", "Crassier", "La Rippe", "Chéserex",
+    "Givrins", "Founex", "Coppet", "Commugny", "Tannay", "Mies",
+    "Chavannes-de-Bogis", "Chavannes-des-Bois", "Bogis-Bossey", "Versoix"
+  ],
+  west: [
+    // Vers Morges / Ouest Lausannois
+    "Allaman", "Féchy", "Bougy-Villars", "Aubonne", "Lavigny", "Etoy", "Buchillon",
+    "Saint-Prex", "Lussy-sur-Morges", "Villars-sous-Yens", "Denens", "Yens",
+    "Morges", "Vufflens-le-Château", "Lonay", "Préverenges", "Tolochenaz",
+    "Saint-Sulpice", "Denges", "Echandens", "Ecublens", "Chavannes-près-Renens",
+    "Bussigny", "Villars-Sainte-Croix", "Mex", "Vufflens-la-Ville", "Aclens",
+    "Romanel-sur-Morges", "Bremblens", "Chigny", "Vullierens"
+  ],
+  north: [
+    // Pied du Jura & Vallée de Joux
+    "Burtigny", "Le Vaud", "Marchissy", "Longirod", "Saint-George", "Gimel",
+    "Saint-Oyens", "Saubraz", "Bière", "Berolle", "Mollens", "Ballens", "Apples",
+    "Bussy-Chardonney", "Reverolle", "Clarmont", "Arzier-Le Muids", "Bassins",
+    // Extension Pied du Jura
+    "Cossonay", "Penthalaz", "Penthaz", "Daillens", "Lussery-Villars", "Gollion",
+    "Senarclens", "Grancy", "Cottens", "Sévery", "Pampigny", "Mauraz", "L'Isle",
+    "Mont-la-Ville", "La Praz", "Cuarnens", "Moiry", "Chevilly", "La Sarraz",
+    "Ferreyres", "Eclépens", "Orny",
+    // Vallée de Joux
+    "Le Chenit", "Le Sentier", "Le Brassus", "L'Orient", "L'Abbaye", "Les Bioux",
+    "Le Lieu", "Les Charbonnières"
+  ]
 };
 
 export const PROJECTS = [
