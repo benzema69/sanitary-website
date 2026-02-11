@@ -44,67 +44,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/index.css">
+  <!-- CSS is imported in index.tsx -->
 
   <!-- Preload critical assets -->
   <link rel="preload" as="image" href="/images/hero-card.jpg">
   <link rel="preload" as="font" href="https://fonts.gstatic.com/s/outfit/v11/QGYyz_MVcBeNP4NjuGObq0F8.woff2"
     type="font/woff2" crossorigin>
 
-  <!-- Schema.org LocalBusiness -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Plumber",
-    "name": "Chappuis Sanitaire Sàrl",
-    "url": "https://chappuis-sanitaire.ch",
-    "logo": "https://chappuis-sanitaire.ch/favicon.svg",
-    "image": "https://chappuis-sanitaire.ch/images/og-image.jpg",
-    "telephone": "+41786577365",
-    "email": "chappuis.san@bluewin.ch",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Chemin de Plein-Air 1",
-      "addressLocality": "Rolle",
-      "postalCode": "1180",
-      "addressRegion": "Vaud",
-      "addressCountry": "CH"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 46.4621692,
-      "longitude": 6.342086
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-      "opens": "07:00",
-      "closes": "19:00"
-    },
-    "areaServed": [
-      {"@type": "City", "name": "Rolle"},
-      {"@type": "City", "name": "Nyon"},
-      {"@type": "City", "name": "Gland"},
-      {"@type": "City", "name": "Morges"},
-      {"@type": "City", "name": "Aubonne"}
-    ],
-    "priceRange": "$$",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "15"
-    },
-    "sameAs": [
-      "https://www.google.com/maps/place/Chappuis+Sanitaire+S%C3%A0rl"
-    ]
-  }
-  </script>
+
 
 </head>
 
 <body>
   <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
+  <script type="module" src="/src/index.tsx"></script>
 </body>
 
 </html>

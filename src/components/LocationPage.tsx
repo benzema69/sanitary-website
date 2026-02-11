@@ -57,7 +57,7 @@ const LocationPage: React.FC = () => {
                             <Phone className="w-5 h-5" />
                             Appeler le {PHONE_DISPLAY}
                         </a>
-                        <Link to="/#contact" className="inline-flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all backdrop-blur-sm">
+                        <Link to="/#projets" className="inline-flex items-center justify-center gap-3 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all backdrop-blur-sm">
                             Demander un devis
                             <ArrowRight className="w-5 h-5" />
                         </Link>
@@ -146,7 +146,7 @@ const LocationPage: React.FC = () => {
                     <p className="text-slate-400 mb-10 text-lg">
                         Devis gratuit et sans engagement. Réponse rapide assurée.
                     </p>
-                    <Link to="/#contact" className="inline-block bg-cyan-500 hover:bg-cyan-400 text-white font-bold py-4 px-10 rounded-full transition-transform active:scale-95 shadow-xl hover:shadow-cyan-500/30">
+                    <Link to="/#projets" className="inline-block bg-cyan-500 hover:bg-cyan-400 text-white font-bold py-4 px-10 rounded-full transition-transform active:scale-95 shadow-xl hover:shadow-cyan-500/30">
                         Contacter Chappuis Sanitaire
                     </Link>
                 </div>

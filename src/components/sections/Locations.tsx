@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { MapPin } from 'lucide-react';
-import { LOCATIONS } from '../../data';
+import { TARGET_LOCATIONS } from '../../data/zones';
 import { useTranslation } from '../../contexts/LanguageContext';
 
 const staggerContainer: Variants = {
@@ -27,6 +27,15 @@ const scaleIn: Variants = {
 
 const Locations: React.FC = () => {
     const { t } = useTranslation();
+
+    // Derive lists from single source of truth
+    const regions = {
+        center: TARGET_LOCATIONS.filter(l => l.region === 'center').map(l => l.name),
+        east: TARGET_LOCATIONS.filter(l => l.region === 'east').map(l => l.name),
+        west: TARGET_LOCATIONS.filter(l => l.region === 'west').map(l => l.name),
+        north: TARGET_LOCATIONS.filter(l => l.region === 'north').map(l => l.name),
+    };
+
     return (
         <div className="py-16 bg-slate-50 border-y border-slate-200">
             <div className="container mx-auto max-w-6xl px-6">
@@ -54,10 +63,10 @@ const Locations: React.FC = () => {
                     viewport={{ once: true }}
                 >
                     {[
-                        { title: t('locations.center'), list: LOCATIONS.center, color: "border-cyan-500" },
-                        { title: t('locations.east'), list: LOCATIONS.east, color: "border-slate-300" },
-                        { title: t('locations.west'), list: LOCATIONS.west, color: "border-slate-300" },
-                        { title: t('locations.north'), list: LOCATIONS.north, color: "border-slate-300" },
+                        { title: t('locations.center'), list: regions.center, color: "border-cyan-500" },
+                        { title: t('locations.east'), list: regions.east, color: "border-slate-300" },
+                        { title: t('locations.west'), list: regions.west, color: "border-slate-300" },
+                        { title: t('locations.north'), list: regions.north, color: "border-slate-300" },
                     ].map((zone, i) => (
                         <motion.div
                             key={i}
