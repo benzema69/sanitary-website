@@ -124,6 +124,7 @@
     "services.canalisations.features.3": "Refurbishment of drop columns (Cast iron/PVC/PE)",
     "services.canalisations.features.4": "Communal network connection (Introduction)",
     "services.canalisations.features.5": "Outdoor faucet installation (Watering)",
+    "services.canalisations.features.6": "Grease separator installation (Professional kitchens)",
     "faq.q1.question": "Who will do the work at my place?",
     "faq.q1.answer": "Myself, Mr. Chappuis. I am your sole contact, from making the appointment to carrying out the work. This ensures consistent work, no subcontracting, and total responsibility for the result.",
     "faq.q2.question": "Are quotes free?",
@@ -192,5 +193,12 @@
     "services.canalisations.process2": "Unclogging or repair",
     "services.canalisations.process3": "Final flow control",
     "service_page.cta": "Request an intervention",
-    "service_page.back": "Back"
+    "service_page.back": "Back",
+    "mobile.quote": "Free quote",
+    "mobile.call": "Call",
+    "header.emergency": "Emergencies 24/7",
+    "footer.location": "Rolle, Vaud",
+    "footer.interventions": "Frequent Interventions",
+    "footer.plumber": "Plumber",
+    "footer.sanitary": "Sanitary"
 }

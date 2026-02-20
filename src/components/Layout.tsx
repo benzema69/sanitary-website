@@ -7,16 +7,20 @@ import { PhoneCall } from 'lucide-react';
 import { PHONE_HREF } from '../data';
 import LegalModal from './LegalModal';
 import { AnimatePresence } from 'framer-motion';
-
-export type LegalPage = 'mentions' | 'privacy' | 'cookies' | null;
+import { useTranslation } from '../contexts/LanguageContext';
+import { LegalPage } from '../types';
 
 const Layout: React.FC = () => {
+    const { t } = useTranslation();
     const location = useLocation();
     const navigate = useNavigate();
     const [activeLegalPage, setActiveLegalPage] = useState<LegalPage>(null);
 
-    // Hash Scroll Handler with Retry & Cross-page support
+    // Hash Scroll Handler with Retry & Cross-page support (max 5 retries)
     useEffect(() => {
+        let retryCount = 0;
+        const maxRetries = 5;
+
         const handleHashScroll = () => {
             if (location.hash) {
                 const id = location.hash.replace('#', '');
@@ -26,8 +30,8 @@ const Layout: React.FC = () => {
                     const elementPosition = el.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.scrollY - offset;
                     window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                } else {
-                    // Retry if element not found immediately (e.g. dynamic content loading)
+                } else if (retryCount < maxRetries) {
+                    retryCount++;
                     setTimeout(handleHashScroll, 100);
                 }
             }
@@ -70,14 +74,14 @@ const Layout: React.FC = () => {
                     onClick={() => handleNavigation('projets')}
                     className="flex-1 bg-white border border-slate-300 text-slate-900 py-3 rounded-lg font-bold text-sm flex items-center justify-center gap-2 active:scale-95 transition-transform"
                 >
-                    Devis gratuit
+                    {t('mobile.quote')}
                 </button>
                 <a
                     href={PHONE_HREF}
                     className="flex-1 bg-cyan-600 text-white py-3 rounded-lg font-bold text-sm flex items-center justify-center gap-2 shadow-lg animate-pulse active:scale-95 transition-transform"
                 >
                     <PhoneCall className="w-4 h-4" />
-                    Appeler
+                    {t('mobile.call')}
                 </a>
             </div>
 

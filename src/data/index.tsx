@@ -204,16 +204,16 @@ export const PROJECTS = [
   {
     title: 'projects.i1.title',
     img: project1,
-    tag: 'Rénovation'
+    tag: 'projects.tag.renovation'
   },
   {
     title: 'projects.i2.title',
     img: project2,
-    tag: 'Installation'
+    tag: 'projects.tag.installation'
   },
   {
     title: 'projects.i3.title',
     img: project3,
-    tag: 'Sanitaire'
+    tag: 'projects.tag.sanitary'
   }
 ];

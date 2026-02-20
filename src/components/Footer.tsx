@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import { PHONE_HREF, PHONE_DISPLAY, EMAIL, NAV_LINKS } from '../data';
 import { TARGET_LOCATIONS } from '../data/zones';
 import { useTranslation } from '../contexts/LanguageContext';
-
-type LegalPage = 'mentions' | 'privacy' | 'cookies' | null;
+import { LegalPage } from '../types';
 
 interface FooterProps {
     scrollTo: (id: string) => void;
@@ -45,7 +44,7 @@ const Footer: React.FC<FooterProps> = ({ scrollTo, setActiveLegalPage }) => {
                     <ul className="space-y-2 text-sm">
                         <li><a href={PHONE_HREF} className="hover:text-cyan-400 transition-colors">{PHONE_DISPLAY}</a></li>
                         <li><a href={`mailto:${EMAIL}`} className="hover:text-cyan-400 transition-colors">{EMAIL}</a></li>
-                        <li>Rolle, Vaud</li>
+                        <li>{t('footer.location')}</li>
                     </ul>
                 </div>
 
@@ -61,7 +60,7 @@ const Footer: React.FC<FooterProps> = ({ scrollTo, setActiveLegalPage }) => {
 
                 {/* SEO LINKS - HIDDEN ON MOBILE BUT VISIBLE FOR BOTS/DESKTOP */}
                 <div className="col-span-1 md:col-span-4 mt-8 pt-8 border-t border-slate-800">
-                    <h4 className="text-sm font-semibold text-slate-500 mb-4 uppercase tracking-wider">Interventions Fréquentes</h4>
+                    <h4 className="text-sm font-semibold text-slate-500 mb-4 uppercase tracking-wider">{t('footer.interventions')}</h4>
                     <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-slate-600">
                         {TARGET_LOCATIONS.slice(0, 30).map((loc) => (
                             <Link
@@ -69,7 +68,7 @@ const Footer: React.FC<FooterProps> = ({ scrollTo, setActiveLegalPage }) => {
                                 to={`/plombier/${loc.slug}`}
                                 className="hover:text-cyan-500 transition-colors"
                             >
-                                Plombier {loc.name}
+                                {t('footer.plumber')} {loc.name}
                             </Link>
                         ))}
                         <span className="text-slate-700 mx-2">|</span>
@@ -79,7 +78,7 @@ const Footer: React.FC<FooterProps> = ({ scrollTo, setActiveLegalPage }) => {
                                 to={`/sanitaire/${loc.slug}`}
                                 className="hover:text-cyan-500 transition-colors"
                             >
-                                Sanitaire {loc.name}
+                                {t('footer.sanitary')} {loc.name}
                             </Link>
                         ))}
                     </div>

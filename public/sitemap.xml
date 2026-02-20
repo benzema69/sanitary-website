@@ -2,45 +2,81 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://chappuis-sanitaire.ch/</loc>
-    <lastmod>2026-02-10</lastmod>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <!-- Service Pages (SPA routes handled client-side) -->
   <url>
-    <loc>https://chappuis-sanitaire.ch/#services</loc>
-    <lastmod>2026-02-10</lastmod>
+    <loc>https://chappuis-sanitaire.ch/services</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://chappuis-sanitaire.ch/#apropos</loc>
-    <lastmod>2026-02-10</lastmod>
+    <loc>https://chappuis-sanitaire.ch/apropos</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://chappuis-sanitaire.ch/#projets</loc>
-    <lastmod>2026-02-10</lastmod>
+    <loc>https://chappuis-sanitaire.ch/projets</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://chappuis-sanitaire.ch/#temoignages</loc>
-    <lastmod>2026-02-10</lastmod>
+    <loc>https://chappuis-sanitaire.ch/temoignages</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chappuis-sanitaire.ch/#faq</loc>
-    <lastmod>2026-02-10</lastmod>
+    <loc>https://chappuis-sanitaire.ch/faq</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://chappuis-sanitaire.ch/#contact</loc>
-    <lastmod>2026-02-10</lastmod>
+    <loc>https://chappuis-sanitaire.ch/contact</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <!-- Service Detail Pages -->
+  <url>
+    <loc>https://chappuis-sanitaire.ch/service/urgences</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chappuis-sanitaire.ch/service/sdb</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://chappuis-sanitaire.ch/service/traitement</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chappuis-sanitaire.ch/service/technique</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chappuis-sanitaire.ch/service/cuisine</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://chappuis-sanitaire.ch/service/canalisations</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

@@ -194,5 +194,12 @@
     "services.canalisations.process2": "Débouchage ou réparation",
     "services.canalisations.process3": "Contrôle final d'écoulement",
     "service_page.cta": "Demander une intervention",
-    "service_page.back": "Retour"
+    "service_page.back": "Retour",
+    "mobile.quote": "Devis gratuit",
+    "mobile.call": "Appeler",
+    "header.emergency": "Urgences 24/7",
+    "footer.location": "Rolle, Vaud",
+    "footer.interventions": "Interventions Fréquentes",
+    "footer.plumber": "Plombier",
+    "footer.sanitary": "Sanitaire"
 }

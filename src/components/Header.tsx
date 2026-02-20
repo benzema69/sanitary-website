@@ -26,7 +26,7 @@ const Header: React.FC = () => {
             <header className={`fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 flex items-center shadow-sm transition-all duration-300 ${isHome ? 'h-20' : 'h-16'}`}>
                 <div className="container mx-auto px-6 flex justify-between items-center">
                     {/* Logo */}
-                    <div className="flex flex-col cursor-pointer group select-none" onClick={() => handleNavigation('hero')}>
+                    <div className="flex flex-col cursor-pointer group select-none" onClick={() => { setMobileMenuOpen(false); navigate('/'); }}>
                         <span className="font-bold text-xl tracking-tight text-slate-900 uppercase leading-none group-hover:text-cyan-700 transition-colors duration-300">Chappuis</span>
                         <span className="text-xs tracking-widest text-slate-500 uppercase mt-1">Sanitaire Sàrl</span>
                     </div>
@@ -88,7 +88,7 @@ const Header: React.FC = () => {
                             </button>
                         ))}
                         <div className="mt-4 p-6 bg-slate-50 rounded-xl">
-                            <p className="text-sm text-slate-500 mb-2 font-bold uppercase">Urgences 24/7</p>
+                            <p className="text-sm text-slate-500 mb-2 font-bold uppercase">{t('header.emergency')}</p>
                             <a href={PHONE_HREF} className="text-2xl font-bold text-slate-900 block">{PHONE_DISPLAY}</a>
                         </div>
                     </motion.div>

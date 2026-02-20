@@ -124,6 +124,7 @@
     "services.canalisations.features.3": "Sanierung von Fallsträngen (Guss/PVC/PE)",
     "services.canalisations.features.4": "Anschluss an das kommunale Netz (Einführung)",
     "services.canalisations.features.5": "Installation von Außenwasserhähnen (Bewässerung)",
+    "services.canalisations.features.6": "Installation von Fettabscheidern (Profiküchen)",
     "faq.q1.question": "Wer führt die Arbeiten bei mir aus?",
     "faq.q1.answer": "Ich selbst, Herr Chappuis. Ich bin Ihr einziger Ansprechpartner, von der Terminvereinbarung bis zur Ausführung der Arbeiten. Dies garantiert eine konsistente Arbeit ohne Subunternehmer und volle Verantwortung für das Ergebnis.",
     "faq.q2.question": "Sind Kostenvoranschläge kostenlos?",
@@ -192,5 +193,12 @@
     "services.canalisations.process2": "Reinigung oder Reparatur",
     "services.canalisations.process3": "Endkontrolle des Abflusses",
     "service_page.cta": "Einen Eingriff anfordern",
-    "service_page.back": "Zurück"
+    "service_page.back": "Zurück",
+    "mobile.quote": "Kostenloses Angebot",
+    "mobile.call": "Anrufen",
+    "header.emergency": "Notfälle 24/7",
+    "footer.location": "Rolle, Waadt",
+    "footer.interventions": "Häufige Einsätze",
+    "footer.plumber": "Klempner",
+    "footer.sanitary": "Sanitär"
 }

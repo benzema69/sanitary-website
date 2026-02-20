@@ -221,9 +221,7 @@ const Projects: React.FC<ProjectsProps> = ({
                                     </div>
                                     <div>
                                         <span className="text-xs font-bold uppercase text-cyan-600">
-                                            {project.tag === 'Rénovation' ? t('projects.tag.renovation') :
-                                                project.tag === 'Installation' ? t('projects.tag.installation') :
-                                                    project.tag === 'Sanitaire' ? t('projects.tag.sanitary') : project.tag}
+                                            {t(project.tag)}
                                         </span>
                                         <h4 className="font-bold text-slate-900">{t(project.title)}</h4>
                                     </div>

@@ -4,3 +4,10 @@ export interface ChatMessage {
   text: string;
   isError?: boolean;
 }
+
+export interface ImageItem {
+  src: string;
+  alt: string;
+}
+
+export type LegalPage = 'mentions' | 'privacy' | 'cookies' | null;

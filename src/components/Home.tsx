@@ -17,9 +17,6 @@ import ScrollToTop from './ScrollToTop';
 import Toast, { ToastType } from './Toast';
 import SplashScreen from './SplashScreen';
 
-// Types
-type LegalPage = 'mentions' | 'privacy' | 'cookies' | null;
-
 const Home: React.FC = () => {
     const [isFormSubmitting, setIsFormSubmitting] = useState(false);
     const [formSuccess, setFormSuccess] = useState(false);
